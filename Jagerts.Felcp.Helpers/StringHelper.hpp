@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 
-namespace Kaleid::Helpers
+namespace Jagerts::Felcp::Helpers
 {
 	enum class SplitArg
 	{

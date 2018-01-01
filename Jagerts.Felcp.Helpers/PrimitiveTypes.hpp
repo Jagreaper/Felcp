@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Kaleid::Helpers
+namespace Jagerts::Felcp::Helpers
 {
 	using byte = unsigned char;
 	using ushort = unsigned short;

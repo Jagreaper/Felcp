@@ -2,7 +2,7 @@
 
 #include "Jagerts.Felcp.Shared\Common.hpp"
 
-namespace Kaleid::Imaging
+namespace Jagerts::Felcp::Imaging
 {
 	enum ChannelType
 	{

@@ -29,3 +29,9 @@
 #else
 #define JAGERTS_FELCP_IMAGING_API __declspec(dllimport)
 #endif
+
+#ifdef JAGERTS_FELCP_IO_IMAGING_DLL
+#define JAGERTS_FELCP_IO_IMAGING_API __declspec(dllexport)
+#else
+#define JAGERTS_FELCP_IO_IMAGING_API __declspec(dllimport)
+#endif

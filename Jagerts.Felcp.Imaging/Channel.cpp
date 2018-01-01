@@ -1,7 +1,7 @@
 #include "Channel.hpp"
 #include <math.h>
 
-using namespace Kaleid::Imaging;
+using namespace Jagerts::Felcp::Imaging;
 
 Channel::Channel(unsigned char* data, ChannelInfo channel_info)
 {

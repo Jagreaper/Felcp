@@ -1,6 +1,6 @@
 #include "Image.hpp"
 
-using namespace Kaleid::Imaging;
+using namespace Jagerts::Felcp::Imaging;
 
 Image::Image()
 {

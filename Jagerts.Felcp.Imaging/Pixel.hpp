@@ -4,7 +4,7 @@
 #include "Channel.hpp"
 #include <vector>
 
-namespace Kaleid::Imaging
+namespace Jagerts::Felcp::Imaging
 {
 	class JAGERTS_FELCP_IMAGING_API Pixel
 	{

@@ -1,6 +1,6 @@
 #include "Pixel.hpp"
 
-using namespace Kaleid::Imaging;
+using namespace Jagerts::Felcp::Imaging;
 
 Pixel::Pixel(unsigned char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels)
 {

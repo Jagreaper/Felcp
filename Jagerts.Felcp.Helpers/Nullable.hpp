@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Kaleid::Helpers
+namespace Jagerts::Felcp::Helpers
 {
 	template <class T>
 	class Nullable sealed

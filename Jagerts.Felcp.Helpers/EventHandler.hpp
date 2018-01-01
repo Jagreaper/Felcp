@@ -4,7 +4,7 @@
 #include <functional>
 #include <vector>
 
-namespace Kaleid::Helpers
+namespace Jagerts::Felcp::Helpers
 {
 	template<class T>
 	using Event = std::function<void(void* sender, const T& arg)>>;

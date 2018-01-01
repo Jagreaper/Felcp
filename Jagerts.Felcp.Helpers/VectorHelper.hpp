@@ -3,7 +3,7 @@
 #include <vector>
 #include <iterator>
 
-namespace Kaleid::Helpers
+namespace Jagerts::Felcp::Helpers
 {
 	class VectorHelper sealed
 	{

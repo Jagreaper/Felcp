@@ -1,7 +1,7 @@
 #include "StringHelper.hpp"
 #include <cctype>
 
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 
 bool StringHelper::BeginsWith(const std::string& input, const std::string& match)
 {
