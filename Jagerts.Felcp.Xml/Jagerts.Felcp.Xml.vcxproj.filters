@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{a8223fe9-eaf3-4807-a7d2-142517f7eb2a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Jagerts.Felcp.Shared\Common.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlFile.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlFile.hpp" />
+  </ItemGroup>
+</Project>

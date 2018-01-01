@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{32ad21cf-8f5d-4e9c-87c2-fb1eba48582a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Encoders">
+      <UniqueIdentifier>{87701541-25a6-444c-90e7-47eccc801d32}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Jagerts.Felcp.Shared\Common.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlEncoder.cpp">
+      <Filter>Encoders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlEncoder.hpp">
+      <Filter>Encoders</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
