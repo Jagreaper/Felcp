@@ -158,7 +158,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Jagerts.Felcp.Shared\Common.cpp" />
     <ClCompile Include="XmlEncoder.cpp" />
   </ItemGroup>
   <ItemGroup>

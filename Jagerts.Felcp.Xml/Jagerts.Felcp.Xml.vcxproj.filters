@@ -4,17 +4,21 @@
     <Filter Include="Shared">
       <UniqueIdentifier>{a8223fe9-eaf3-4807-a7d2-142517f7eb2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Type">
+      <UniqueIdentifier>{1425762f-356d-4923-b3e3-621d183326ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Jagerts.Felcp.Shared\Common.cpp">
-      <Filter>Shared</Filter>
+    <ClCompile Include="XmlFile.cpp">
+      <Filter>Type</Filter>
     </ClCompile>
-    <ClCompile Include="XmlFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
       <Filter>Shared</Filter>
     </ClInclude>
-    <ClInclude Include="XmlFile.hpp" />
+    <ClInclude Include="XmlFile.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

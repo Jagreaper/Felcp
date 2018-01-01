@@ -10,12 +10,14 @@
     <Filter Include="Decoders">
       <UniqueIdentifier>{4c891ddc-fb37-4a1e-bb6d-131d15e6165e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{6a24de49-c816-41ac-ab48-3979da32ad2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Jagerts.Felcp.Shared\Common.cpp">
-      <Filter>Shared</Filter>
+    <ClCompile Include="File.cpp">
+      <Filter>Misc</Filter>
     </ClCompile>
-    <ClCompile Include="File.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
@@ -27,6 +29,8 @@
     <ClInclude Include="DecoderBase.hpp">
       <Filter>Decoders</Filter>
     </ClInclude>
-    <ClInclude Include="File.hpp" />
+    <ClInclude Include="File.hpp">
+      <Filter>Misc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
