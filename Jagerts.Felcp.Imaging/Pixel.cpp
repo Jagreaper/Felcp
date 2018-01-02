@@ -17,7 +17,7 @@ Channel Pixel::GetChannel(unsigned int channel)
 
 Channel Pixel::GetChannel(ChannelType channel)
 {
-	for (int index = 0; index < this->_num_channels; index++)
+	for (unsigned int index = 0; index < this->_num_channels; index++)
 	{
 		if (this->_channels[index].Type == channel)
 			return Channel(this->_data + index, this->_channels[channel]);

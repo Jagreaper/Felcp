@@ -57,7 +57,7 @@ Pixel Image::GetPixel(unsigned int x, unsigned int y)
 	unsigned int pos = x + (y * this->_stride);
 	unsigned char* pixel_data = this->_data.data() + pos;
 
-	return Pixel(pixel_data, this->_pixel_length, this->_channels.data(), this->_channels.size());
+	return Pixel(pixel_data, this->_pixel_length, this->_channels.data(), (unsigned int)this->_channels.size());
 }
 unsigned int& Image::GetWidth()
 {
@@ -77,7 +77,7 @@ void Image::GetSize(unsigned int* width, unsigned int* height)
 
 void Image::SetData(unsigned char* data, unsigned int data_length)
 {
-	for (int index = 0; index < data_length; index++)
+	for (unsigned int index = 0; index < data_length; index++)
 		this->_data.push_back(*data++);
 }
 
@@ -89,7 +89,7 @@ void Image::SetData(std::vector<unsigned char> data)
 
 void Image::SetChannels(ChannelInfo* channels, unsigned int num_channels)
 {
-	for (int index = 0; index < num_channels; index++)
+	for (unsigned int index = 0; index < num_channels; index++)
 		this->_channels.push_back(*channels++);
 }
 

@@ -31,7 +31,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9D4A4882-1D89-4140-B4BA-17936F7D95C6}</ProjectGuid>
     <RootNamespace>JagertsFelcpIO</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

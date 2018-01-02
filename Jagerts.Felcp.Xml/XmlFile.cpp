@@ -304,7 +304,7 @@ void ParseElement(const XmlElement& element, std::string* const& output_str, uns
 {
 	std::string indenting_str;
 
-	for (int index = 0; index < indenting; index++)
+	for (unsigned int index = 0; index < indenting; index++)
 		indenting_str += "  ";
 
 	*output_str += indenting_str;
