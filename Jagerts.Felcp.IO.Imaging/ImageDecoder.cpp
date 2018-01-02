@@ -79,24 +79,31 @@ void RawImageData::ToImage(Image* image)
 	switch (this->_pixel_size)
 	{
 	case 1:
+	{
 		ChannelInfo info[1];
 		info[0].Type = ChannelType::Gray;
 		image->SetChannels(info, this->_pixel_size);
 		break;
+	}
 	case 2:
+	{
 		ChannelInfo info[2];
 		info[0].Type = ChannelType::Gray;
 		info[1].Type = ChannelType::Alpha;
 		image->SetChannels(info, this->_pixel_size);
 		break;
+	}
 	case 3:
+	{
 		ChannelInfo info[3];
 		info[0].Type = ChannelType::Red;
 		info[1].Type = ChannelType::Green;
 		info[2].Type = ChannelType::Blue;
 		image->SetChannels(info, this->_pixel_size);
 		break;
+	}
 	case 4:
+	{
 		ChannelInfo info[4];
 		info[0].Type = ChannelType::Red;
 		info[1].Type = ChannelType::Green;
@@ -104,6 +111,7 @@ void RawImageData::ToImage(Image* image)
 		info[3].Type = ChannelType::Alpha;
 		image->SetChannels(info, this->_pixel_size);
 		break;
+	}
 	default:
 		throw new std::runtime_error("Pixel size not supported");
 	}

@@ -170,21 +170,31 @@ void XmlFile::AddElement(const XmlElement& element)
 void XmlFile::FromString(const std::string& string, XmlFile* file)
 {
 	file->_elements.clear();
+	const char* str_ptr = string.c_str();
+	const char* str_ptr_end = str_ptr + (string.size() - 1);
+	while (str_ptr <= str_ptr_end)
+	{
+		if (*str_ptr == '<')
+		{
+			std::string tag_name;
+			while (isalnum(*(++str_ptr)))
+				tag_name += *str_ptr;
 
+			std::vector<std::string> attributes;
+			std::vector<std::string> values;
+			while (*str_ptr != '/' || *str_ptr != '>')
+			{
+
+			}
+		}
+		else if (!isspace(*str_ptr))
+			throw std::runtime_error("Bad xml formatting");
+	}
 
 }
 
-void ParseElementClass(const XmlElement& element, std::string* const& output_str, unsigned int indenting = 0)
+void ParseElementAttributes(const XmlElement& element, std::string* const& output_str, unsigned int indenting)
 {
-	std::string indenting_str;
-
-	for (int index = 0; index < indenting; index++)
-		indenting_str += "  ";
-
-	*output_str += indenting_str;
-	*output_str += "<";
-	*output_str += element.GetName();
-
 	if (element.HasAttributes())
 	{
 		for (const XmlAttribute& attribute : *element.GetAttributes())
@@ -196,6 +206,20 @@ void ParseElementClass(const XmlElement& element, std::string* const& output_str
 			*output_str += "\"";
 		}
 	}
+}
+
+void ParseElement(const XmlElement& element, std::string* const& output_str, unsigned int indenting = 0)
+{
+	std::string indenting_str;
+
+	for (int index = 0; index < indenting; index++)
+		indenting_str += "  ";
+
+	*output_str += indenting_str;
+	*output_str += "<";
+	*output_str += element.GetName();
+
+	ParseElementAttributes(element, output_str, indenting);
 
 	if (!element.HasChildren())
 	{
@@ -208,14 +232,11 @@ void ParseElementClass(const XmlElement& element, std::string* const& output_str
 		{
 			*output_str += "\n";
 			for (const XmlElement& element : *element.GetChildren())
-			{
-				ParseElementClass(element, output_str, indenting + 1);
-			}
+				ParseElement(element, output_str, indenting + 1);
 		}
 		else
-		{
 			*output_str += *element.GetChild();
-		}
+
 		*output_str += "</";
 		*output_str += element.GetName();
 		*output_str += ">";
@@ -229,5 +250,5 @@ void XmlFile::ToString(std::string* string)
 	string->clear();
 
 	for (const XmlElement& element : this->_elements)
-		ParseElementClass(element, string);
+		ParseElement(element, string);
 }

@@ -7,10 +7,16 @@
     <Filter Include="Encoders">
       <UniqueIdentifier>{87701541-25a6-444c-90e7-47eccc801d32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Decoders">
+      <UniqueIdentifier>{e8e86c8c-f590-42c3-99cd-97bbdec3ae7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XmlEncoder.cpp">
       <Filter>Encoders</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlDecoder.cpp">
+      <Filter>Decoders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -19,6 +25,9 @@
     </ClInclude>
     <ClInclude Include="XmlEncoder.hpp">
       <Filter>Encoders</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlDecoder.hpp">
+      <Filter>Decoders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

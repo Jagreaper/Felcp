@@ -38,7 +38,7 @@ namespace Jagerts::Felcp::IO
 	class JAGERTS_FELCP_IO_IMAGING_API ImagePathDecoder : public PathDecoderBase<Jagerts::Felcp::Imaging::Image*, void*>, public PathDecoderBase<RawImageData, void*>
 	{
 	public:
-		bool TryDecode(const char* source, Jagerts::Felcp::Imaging::Image* output, void* arg);
-		bool TryDecode(const char* source, RawImageData* output, void* arg);
+		bool TryDecode(const char* source, Jagerts::Felcp::Imaging::Image* output, void* arg = NULL);
+		bool TryDecode(const char* source, RawImageData* output, void* arg = NULL);
 	};
 }

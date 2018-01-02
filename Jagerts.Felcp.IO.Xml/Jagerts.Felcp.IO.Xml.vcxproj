@@ -158,10 +158,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="XmlDecoder.cpp" />
     <ClCompile Include="XmlEncoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp" />
+    <ClInclude Include="XmlDecoder.hpp" />
     <ClInclude Include="XmlEncoder.hpp" />
   </ItemGroup>
   <ItemGroup>

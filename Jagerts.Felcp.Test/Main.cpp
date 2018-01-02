@@ -4,12 +4,7 @@
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 
-#ifdef DEBUG
-int main()
-#endif
-#ifdef RELEASE
-int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
-#endif
+void EncodeXml()
 {
 	XmlFile xml;
 	XmlElement element("GameObject", "Hello World!");
@@ -20,6 +15,16 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 	xml.AddElement(element);
 
 	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
-	XmlPathEncoder xml_encoder;
-	xml_encoder.TryEncode(xml_path, &xml, NULL);
+	XmlEncoder xml_encoder;
+	xml_encoder.TryEncode(xml_path, &xml);
+}
+
+#ifdef DEBUG
+int main()
+#endif
+#ifdef RELEASE
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
+#endif
+{
+	EncodeXml();
 }
