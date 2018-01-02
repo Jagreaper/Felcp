@@ -4,6 +4,7 @@
 #include <STB\stb_image.h>
 
 using namespace Jagerts::Felcp::IO;
+using namespace Jagerts::Felcp::IO::Imaging;
 using namespace Jagerts::Felcp::Imaging;
 
 unsigned char* LoadImageFromFile(char const* file, int* width, int* height, int* channels, int req_comp)
@@ -46,7 +47,7 @@ void RawImageData::SetPixelSize(int pixel_size)
 	this->_pixel_size = pixel_size;
 }
 
-const unsigned char* RawImageData::GetData() const
+unsigned char* RawImageData::GetData()
 {
 	return this->_data;
 }
@@ -119,7 +120,7 @@ void RawImageData::ToImage(Image* image)
 	image->CreateDefaults();
 }
 
-bool ImagePathDecoder::TryDecode(const char* source, RawImageData* output, void* arg)
+bool ImageDecoder::TryDecode(const char* source, RawImageData* output, void* arg)
 {
 	int width, height, comp;
 	unsigned char* data = LoadImageFromFile(source, &width, &height, &comp, STBI_rgb_alpha);
@@ -130,11 +131,10 @@ bool ImagePathDecoder::TryDecode(const char* source, RawImageData* output, void*
 	return true;
 }
 
-bool ImagePathDecoder::TryDecode(const char* source, Image* output, void* arg)
+bool ImageDecoder::TryDecode(const char* source, Image* output, void* arg)
 {
 	RawImageData data;
 	this->TryDecode(source, &data, arg);
 	data.ToImage(output);
-	RawImageData::Free(&data);
 	return true;
 }

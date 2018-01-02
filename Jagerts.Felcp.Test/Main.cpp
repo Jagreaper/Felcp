@@ -1,9 +1,11 @@
 #include "Jagerts.Felcp.Xml\XmlFile.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlDecoder.hpp"
+#include "Jagerts.Felcp.IO.Imaging\ImageDecoder.hpp"
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
+using namespace Jagerts::Felcp::IO::Imaging;
 
 void EncodeXml()
 {
@@ -37,5 +39,5 @@ int main()
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #endif
 {
-	DecodeXml();
+	ImageDecoder decoder;
 }

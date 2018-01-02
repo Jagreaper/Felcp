@@ -8,9 +8,9 @@ namespace Jagerts::Felcp::Imaging
 	class Image;
 }
 
-namespace Jagerts::Felcp::IO
+namespace Jagerts::Felcp::IO::Imaging
 {
-	class RawImageData
+	class JAGERTS_FELCP_IO_IMAGING_API RawImageData
 	{
 	public:
 		static void Free(RawImageData* data);
@@ -20,7 +20,7 @@ namespace Jagerts::Felcp::IO
 		void SetHeight(int height);
 		void SetPixelSize(int pixel_size);
 
-		const unsigned char* GetData() const;
+		unsigned char* GetData();
 		const int GetWidth() const;
 		const int GetHeight() const;
 		const int GetPixelSize() const;
@@ -35,7 +35,7 @@ namespace Jagerts::Felcp::IO
 		size_t _size;
 	};
 
-	class JAGERTS_FELCP_IO_IMAGING_API ImagePathDecoder : public PathDecoderBase<Jagerts::Felcp::Imaging::Image*, void*>, public PathDecoderBase<RawImageData, void*>
+	class JAGERTS_FELCP_IO_IMAGING_API ImageDecoder : public PathDecoderBase<Jagerts::Felcp::Imaging::Image*, void*>, public PathDecoderBase<RawImageData*, void*>
 	{
 	public:
 		bool TryDecode(const char* source, Jagerts::Felcp::Imaging::Image* output, void* arg = NULL);
