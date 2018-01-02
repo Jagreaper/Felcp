@@ -16,6 +16,7 @@ namespace Jagerts::Felcp::Xml
 	class JAGERTS_FELCP_XML_API XmlElement
 	{
 	public:
+		XmlElement() { };
 		XmlElement(const std::string name);
 		XmlElement(const std::string name, const std::vector<XmlAttribute> attributes);
 		XmlElement(const std::string name, const std::string value);
@@ -38,6 +39,8 @@ namespace Jagerts::Felcp::Xml
 		void AddElement(const XmlElement& element);
 		void SetValue(const std::string& value);
 		void SetName(const std::string& name);
+
+		void Clear();
 	private:
 		const void* InternalGetChildren() const;
 
@@ -57,6 +60,7 @@ namespace Jagerts::Felcp::Xml
 
 		static void FromString(const std::string& string, XmlFile* file);
 		void ToString(std::string* string);
+		void Clear();
 	private:
 		std::vector<XmlElement> _elements;
 	};

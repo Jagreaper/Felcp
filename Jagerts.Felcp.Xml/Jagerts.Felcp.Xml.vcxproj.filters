@@ -12,12 +12,18 @@
     <ClCompile Include="XmlFile.cpp">
       <Filter>Type</Filter>
     </ClCompile>
+    <ClCompile Include="XmlObject.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
       <Filter>Shared</Filter>
     </ClInclude>
     <ClInclude Include="XmlFile.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlObject.hpp">
       <Filter>Type</Filter>
     </ClInclude>
   </ItemGroup>

@@ -146,6 +146,13 @@ void XmlElement::SetName(const std::string& name)
 	this->_name = name;
 }
 
+void XmlElement::Clear()
+{
+	this->_name.clear();
+	this->_value.clear();
+	this->_attributes.clear();
+	this->_elements.clear();
+}
 
 const std::vector<XmlElement>* XmlFile::GetElements() const
 {
@@ -343,4 +350,9 @@ void XmlFile::ToString(std::string* string)
 
 	for (const XmlElement& element : this->_elements)
 		ParseElement(element, string);
+}
+
+void XmlFile::Clear()
+{
+	this->_elements.clear();
 }
