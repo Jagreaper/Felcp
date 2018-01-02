@@ -168,14 +168,8 @@ void XmlFile::AddElement(const XmlElement& element)
 	this->_elements.push_back(element);
 }
 
-XmlElement ParseElementString(const char*& str_ptr)
+void ParseElementAttributesString(XmlElement& element, const char*& str_ptr)
 {
-	std::string tag_name;
-	while (isalnum(*(++str_ptr)))
-		tag_name += *str_ptr;
-
-	XmlElement element(tag_name);
-
 	if (!isspace(*str_ptr) && *str_ptr != '/' && *str_ptr != '>')
 		throw std::runtime_error("Bad xml formatting");
 
@@ -202,6 +196,21 @@ XmlElement ParseElementString(const char*& str_ptr)
 
 		element.AddAttribute(XmlAttribute(attr_name, attr_value));
 	}
+}
+
+void ParseElementOpenTagNameString(std::string& tag_name, const char*& str_ptr)
+{
+	while (isalnum(*(++str_ptr)))
+		tag_name += *str_ptr;
+}
+
+XmlElement ParseElementString(const char*& str_ptr)
+{
+	std::string tag_name;
+	ParseElementOpenTagNameString(tag_name, str_ptr);
+
+	XmlElement element(tag_name);
+	ParseElementAttributesString(element, str_ptr);
 
 	if (*str_ptr == '>')
 	{
