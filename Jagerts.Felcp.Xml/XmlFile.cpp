@@ -1,4 +1,5 @@
 #include "XmlFile.hpp"
+#include <algorithm>
 
 using namespace Jagerts::Felcp::Xml;
 
@@ -167,6 +168,97 @@ void XmlFile::AddElement(const XmlElement& element)
 	this->_elements.push_back(element);
 }
 
+XmlElement ParseElementString(const char*& str_ptr)
+{
+	std::string tag_name;
+	while (isalnum(*(++str_ptr)))
+		tag_name += *str_ptr;
+
+	XmlElement element(tag_name);
+
+	if (!isspace(*str_ptr) && *str_ptr != '/' && *str_ptr != '>')
+		throw std::runtime_error("Bad xml formatting");
+
+	while (*str_ptr != '/' && *str_ptr != '>')
+	{
+		while (isspace(*str_ptr))
+			str_ptr++;
+
+		std::string attr_name;
+		while (isalnum(*(str_ptr)))
+			attr_name += *str_ptr++;
+
+		if (*str_ptr != '=')
+			throw std::runtime_error("Bad xml formatting");
+
+		if (*(++str_ptr) != '\"')
+			throw std::runtime_error("Bad xml formatting");
+
+		std::string attr_value;
+		while (*(++str_ptr) != '\"')
+			attr_value += *str_ptr;
+
+		str_ptr++;
+
+		element.AddAttribute(XmlAttribute(attr_name, attr_value));
+	}
+
+	if (*str_ptr == '>')
+	{
+		std::string tag_value;
+		while (*(++str_ptr) != '<')
+			tag_value += *str_ptr;
+
+		bool ruuning = true;
+
+		while (ruuning)
+		{
+			if (*str_ptr == '<')
+			{
+				if (*(++str_ptr) != '/')
+				{
+					if (!std::all_of(tag_value.begin(), tag_value.end(), isspace))
+						throw std::runtime_error("Bad xml formatting");
+
+					element.AddElement(ParseElementString(--str_ptr));
+				}
+				else
+				{
+					std::string end_tag_name;
+					while (isalnum(*(++str_ptr)))
+						end_tag_name += *str_ptr;
+
+					while (isspace(*str_ptr))
+						str_ptr++;
+
+					if (*str_ptr != '>')
+						throw std::runtime_error("Bad xml formatting");
+
+					if (tag_name != end_tag_name)
+						throw std::runtime_error("Bad xml formatting");
+
+					if (!std::all_of(tag_value.begin(), tag_value.end(), isspace) && element.HasElementChildren())
+						throw std::runtime_error("Bad xml formatting");
+
+					if (!std::all_of(tag_value.begin(), tag_value.end(), isspace) && !element.HasElementChildren())
+						element.SetValue(tag_value);
+
+					return element;
+				}
+			}
+
+			*str_ptr++;
+		}
+	}
+	else if (*str_ptr == '/')
+	{
+		if (*(++str_ptr) != '>')
+			throw std::runtime_error("Bad xml formatting");
+
+		return element;
+	}
+}
+
 void XmlFile::FromString(const std::string& string, XmlFile* file)
 {
 	file->_elements.clear();
@@ -175,20 +267,11 @@ void XmlFile::FromString(const std::string& string, XmlFile* file)
 	while (str_ptr <= str_ptr_end)
 	{
 		if (*str_ptr == '<')
-		{
-			std::string tag_name;
-			while (isalnum(*(++str_ptr)))
-				tag_name += *str_ptr;
-
-			std::vector<std::string> attributes;
-			std::vector<std::string> values;
-			while (*str_ptr != '/' || *str_ptr != '>')
-			{
-
-			}
-		}
+			file->AddElement(ParseElementString(str_ptr));
 		else if (!isspace(*str_ptr))
 			throw std::runtime_error("Bad xml formatting");
+
+		str_ptr++;
 	}
 
 }
