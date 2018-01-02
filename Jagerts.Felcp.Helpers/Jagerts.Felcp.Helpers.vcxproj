@@ -99,7 +99,14 @@
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-</Command>
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
+xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
+if not exist "$(SolutionDir)dist\Jagerts.Felcp.Shared\" mkdir "$(SolutionDir)dist\Jagerts.Felcp.Shared\"
+xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Felcp.Shared\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -116,7 +123,14 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-</Command>
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
+xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
+if not exist "$(SolutionDir)dist\Jagerts.Felcp.Shared\" mkdir "$(SolutionDir)dist\Jagerts.Felcp.Shared\"
+xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Felcp.Shared\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,10 +153,10 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
 xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
 if not exist "$(SolutionDir)dist\Jagerts.Felcp.Shared\" mkdir "$(SolutionDir)dist\Jagerts.Felcp.Shared\"
@@ -169,10 +183,10 @@ xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Fel
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
 xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
 if not exist "$(SolutionDir)dist\Jagerts.Felcp.Shared\" mkdir "$(SolutionDir)dist\Jagerts.Felcp.Shared\"
