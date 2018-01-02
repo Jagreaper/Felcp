@@ -17,6 +17,7 @@ public:
 		this->RegisterAttribute("Health", &this->_health);
 		this->RegisterAttribute("Armor", &this->_armor);
 		this->RegisterArray("GameObject", &this->GameObjects, std::bind(&XmlGameObject::XmlConstructor, this));
+		this->RegisterValue(&this->_value);
 	}
 
 	XmlGameObject* XmlConstructor()
@@ -35,6 +36,7 @@ public:
 private:
 	float _health = 10;
 	double _armor = 5;
+	std::string _value = "Hello World!";
 };
 
 void EncodeXml()

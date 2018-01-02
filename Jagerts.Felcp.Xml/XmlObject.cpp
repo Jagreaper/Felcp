@@ -105,12 +105,14 @@ std::string CastToString(void* value, const XmlObjectAttributeType& type)
 void XmlObject::Serialize(XmlElement* output)
 {
 	output->Clear();
+	output->SetName(this->GetName());
 	for (const XmlObjectAttribute& attribute : this->_attributes)
 		output->AddAttribute(XmlAttribute(attribute.GetName(), CastToString(attribute.GetValue(), attribute.GetType())));
 
 	for (int index = 0; index < this->_elements.size(); index++)
 	{
 		XmlElement element;
+		element.SetName(this->_elements[index]->GetName());
 		this->_elements[index]->Serialize(&element);
 		output->AddElement(element);
 	}
@@ -124,6 +126,7 @@ void XmlObject::Serialize(XmlElement* output)
 				for (XmlObject*& object : *object_array.GetElements())
 				{
 					XmlElement element;
+					element.SetName(object->GetName());
 					object->Serialize(&element);
 					output->AddElement(element);
 				}
@@ -131,8 +134,15 @@ void XmlObject::Serialize(XmlElement* output)
 		}
 	}
 
-	if (this->_value != NULL && this->_elements.size() == 0 && this->_elements_array.size() == 0)
-		output->SetValue(CastToString(this->_value, this->_type));
+	if (this->_value != NULL && this->_elements.size() == 0)
+	{
+		size_t size = 0;
+		for (XmlObjectArray& object_array : this->_elements_array)
+			size += object_array.GetElements()->size();
+
+		if (size == 0)
+			output->SetValue(CastToString(this->_value, this->_type));
+	}
 }
 
 #define _DEFAULT_NUMBER_CASE(TYPE, ATTRIBUTE, VALUE) \
