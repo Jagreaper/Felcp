@@ -136,5 +136,6 @@ bool ImageDecoder::TryDecode(const char* source, Image* output, void* arg)
 	RawImageData data;
 	this->TryDecode(source, &data, arg);
 	data.ToImage(output);
+	RawImageData::Free(&data);
 	return true;
 }

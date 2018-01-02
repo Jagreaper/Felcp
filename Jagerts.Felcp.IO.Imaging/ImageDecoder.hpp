@@ -28,7 +28,7 @@ namespace Jagerts::Felcp::IO::Imaging
 		
 		void ToImage(Jagerts::Felcp::Imaging::Image* image);
 	private:
-		unsigned char* _data;
+		unsigned char* _data = NULL;
 	    int _width;
 		int _height;
 		int _pixel_size;
