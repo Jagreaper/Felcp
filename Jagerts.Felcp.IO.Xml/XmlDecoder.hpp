@@ -9,7 +9,7 @@ namespace Jagerts::Felcp::IO::Xml
 	class JAGERTS_FELCP_IO_XML_API XmlDecoder : StreamPathDecoder<Jagerts::Felcp::Xml::XmlFile*, void*>
 	{
 	public:
-		bool TryDecode(std::istream& source, Jagerts::Felcp::Xml::XmlFile* input, void* arg = NULL);
+		bool TryDecode(std::istream& source, Jagerts::Felcp::Xml::XmlFile* output, void* arg = NULL);
 		using StreamPathDecoder::TryDecode;
 	};
 }

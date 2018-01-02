@@ -1,5 +1,6 @@
 #include "Jagerts.Felcp.Xml\XmlFile.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlEncoder.hpp"
+#include "Jagerts.Felcp.IO.Xml\XmlDecoder.hpp"
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
@@ -19,6 +20,14 @@ void EncodeXml()
 	xml_encoder.TryEncode(xml_path, &xml);
 }
 
+void DecodeXml()
+{
+	XmlFile xml;
+	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
+	XmlDecoder xml_decoder;
+	xml_decoder.TryDecode(xml_path, &xml);
+}
+
 #ifdef DEBUG
 int main()
 #endif
@@ -28,5 +37,5 @@ int main()
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #endif
 {
-	EncodeXml();
+	DecodeXml();
 }
