@@ -7,43 +7,6 @@
 
 using namespace Jagerts::Felcp::Xml;
 
-XmlObjectAttribute::XmlObjectAttribute(std::string name, void* value, XmlObjectAttributeType type)
-{
-	this->SetName(name);
-	this->_value = value;
-	this->_type = type;
-}
-
-void XmlNamedObject::SetName(const std::string name)
-{
-	this->_name = name;
-}
-
-const std::string& XmlNamedObject::GetName() const
-{
-	return this->_name;
-}
-
-void XmlObjectAttribute::SetValue(void* const value)
-{
-	this->_value = value;
-}
-
-void* const& XmlObjectAttribute::GetValue() const
-{
-	return this->_value;
-}
-
-void XmlObjectAttribute::SetType(const XmlObjectAttributeType type)
-{
-	this->_type = type;
-}
-
-const XmlObjectAttributeType& XmlObjectAttribute::GetType() const
-{
-	return this->_type;
-}
-
 std::vector<XmlObject*>* XmlObjectArray::GetElements()
 {
 	return &this->_elements;
@@ -64,14 +27,14 @@ void XmlObjectArray::Clear()
 }
 
 #define _CAST_NUMBER_CASE(TYPE, ATTRIBUTE, VALUE) \
-case XmlObjectAttributeType::ATTRIBUTE: \
+case XmlObjectValueType::ATTRIBUTE: \
 { \
 		std::ostringstream stream; \
 		stream << *(TYPE*)VALUE; \
 		return stream.str(); \
 } \
 
-std::string CastToString(void* value, const XmlObjectAttributeType& type)
+std::string CastToString(void* value, const XmlObjectValueType& type)
 {
 	switch (type)
 	{
@@ -81,19 +44,19 @@ std::string CastToString(void* value, const XmlObjectAttributeType& type)
 	_CAST_NUMBER_CASE(unsigned int, UInt, value)
 	_CAST_NUMBER_CASE(long long, LongLong, value)
 	_CAST_NUMBER_CASE(unsigned long long, ULongLong, value)
-	case XmlObjectAttributeType::Float:
+	case XmlObjectValueType::Float:
 	{
 		std::ostringstream stream;
 		stream << *(float*)value;
 		return stream.str();
 	}
 	_CAST_NUMBER_CASE(double, Double, value)
-	case XmlObjectAttributeType::Boolean:
+	case XmlObjectValueType::Boolean:
 	{
 		bool c_value = (*(bool*)value);
 		return c_value ? "true" : "false";
 	}
-	case XmlObjectAttributeType::String:
+	case XmlObjectValueType::String:
 		return (*(std::string*)value);
 	default:
 		throw new std::runtime_error("Type not supported expection");
@@ -134,25 +97,25 @@ void XmlObject::Serialize(XmlElement* output)
 		}
 	}
 
-	if (this->_value != NULL && this->_elements.size() == 0)
+	if (this->GetValue() != NULL && this->_elements.size() == 0)
 	{
 		size_t size = 0;
 		for (XmlObjectArray& object_array : this->_elements_array)
 			size += object_array.GetElements()->size();
 
 		if (size == 0)
-			output->SetValue(CastToString(this->_value, this->_type));
+			output->SetValue(CastToString(this->GetValue(), this->GetType()));
 	}
 }
 
 #define _DEFAULT_NUMBER_CASE(TYPE, ATTRIBUTE, VALUE) \
-case XmlObjectAttributeType::ATTRIBUTE: \
+case XmlObjectValueType::ATTRIBUTE: \
 { \
 	*(TYPE*)VALUE = 0; \
 	break; \
 } \
 
-void SetDefaultValue(void* value, const XmlObjectAttributeType& type)
+void SetDefaultValue(void* value, const XmlObjectValueType& type)
 {
 	switch (type)
 	{
@@ -164,12 +127,12 @@ void SetDefaultValue(void* value, const XmlObjectAttributeType& type)
 	_DEFAULT_NUMBER_CASE(unsigned long long, ULongLong, value)
 	_DEFAULT_NUMBER_CASE(short, Float, value)
 	_DEFAULT_NUMBER_CASE(short, Double, value)
-	case XmlObjectAttributeType::Boolean:
+	case XmlObjectValueType::Boolean:
 	{
 		*(bool*)value = false;
 		break;
 	}
-	case XmlObjectAttributeType::String:
+	case XmlObjectValueType::String:
 	{
 		*(std::string*)value = "";
 		break;
@@ -180,57 +143,57 @@ void SetDefaultValue(void* value, const XmlObjectAttributeType& type)
 }
 #undef _DEFAULT_NUMBER_CASE
 
-void CastFromString(void* value, XmlObjectAttributeType type, std::string string)
+void CastFromString(void* value, XmlObjectValueType type, std::string string)
 {
 	*(double*)value = std::stod(string);
 	switch (type)
 	{
-	case XmlObjectAttributeType::Short:
+	case XmlObjectValueType::Short:
 	{
 		*(short*)value = (short)std::stoi(string);
 		break;
 	}
-	case XmlObjectAttributeType::UShort:
+	case XmlObjectValueType::UShort:
 	{
 		*(unsigned short*)value = (unsigned short)std::stoi(string);
 		break;
 	}
-	case XmlObjectAttributeType::Int:
+	case XmlObjectValueType::Int:
 	{
 		*(int*)value = (short)std::stoi(string);
 		break;
 	}
-	case XmlObjectAttributeType::UInt:
+	case XmlObjectValueType::UInt:
 	{
 		*(unsigned int*)value = (unsigned int)std::stoul(string);
 		break;
 	}
-	case XmlObjectAttributeType::LongLong:
+	case XmlObjectValueType::LongLong:
 	{
 		*(long long*)value = (long long)std::stoll(string);
 		break;
 	}
-	case XmlObjectAttributeType::ULongLong:
+	case XmlObjectValueType::ULongLong:
 	{
 		*(unsigned long long*)value = (unsigned long long)std::stoull(string);
 		break;
 	}
-	case XmlObjectAttributeType::Float:
+	case XmlObjectValueType::Float:
 	{
 		*(float*)value = (float)std::stof(string);
 		break;
 	}
-	case XmlObjectAttributeType::Double:
+	case XmlObjectValueType::Double:
 	{
 		*(double*)value = (double)std::stod(string);
 		break;
 	}
-	case XmlObjectAttributeType::Boolean:
+	case XmlObjectValueType::Boolean:
 	{
 		*(std::string*)value = (string == "true" || string == "1") ? true : false;
 		break;
 	}
-	case XmlObjectAttributeType::String:
+	case XmlObjectValueType::String:
 	{
 		*(std::string*)value = string;
 		break;
@@ -282,14 +245,14 @@ void XmlObject::Deserialize(const XmlElement& input)
 		}
 	}
 
-	if (input.HasChildren() && !input.HasElementChildren() && this->_value != NULL)
-		CastFromString(this->_value, this->_type, *input.GetChild());
+	if (input.HasChildren() && !input.HasElementChildren() && this->GetValue() != NULL)
+		CastFromString(this->GetValue(), this->GetType(), *input.GetChild());
 }
 
 #define _REGISTER_ATTRIBUTE_TYPE(TYPE, ENUM_TYPE) \
 void XmlObject::RegisterAttribute(const std::string name, TYPE* value) \
 { \
-	this->_attributes.push_back(XmlObjectAttribute(name, value, XmlObjectAttributeType::ENUM_TYPE)); \
+	this->_attributes.push_back(XmlObjectAttribute(name, value, XmlObjectValueType::ENUM_TYPE)); \
 } \
 
 _REGISTER_ATTRIBUTE_TYPE(short, Short)
@@ -315,7 +278,7 @@ void XmlObject::Clear()
 	this->_elements.clear();
 	this->_elements_array.clear();
 	this->_name.clear();
-	this->_value = NULL;
+	this->SetValue(NULL);
 }
 
 std::vector<XmlObjectArray>* XmlObject::GetElementsArray()
@@ -326,8 +289,8 @@ std::vector<XmlObjectArray>* XmlObject::GetElementsArray()
 #define _REGISTER_VALUE_TYPE(TYPE, ENUM_TYPE) \
 void XmlObject::RegisterValue(TYPE* value) \
 { \
-	this->_value = (void*)value; \
-	this->_type = XmlObjectAttributeType::ENUM_TYPE; \
+	this->SetValue((void*)value); \
+	this->SetType(XmlObjectValueType::ENUM_TYPE); \
 } \
 
 _REGISTER_VALUE_TYPE(short, Short)

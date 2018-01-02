@@ -195,9 +195,11 @@ xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Fel
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp" />
+    <ClInclude Include="Deserializable.hpp" />
     <ClInclude Include="EventHandler.hpp" />
     <ClInclude Include="Nullable.hpp" />
     <ClInclude Include="PrimitiveTypes.hpp" />
+    <ClInclude Include="Serializable.hpp" />
     <ClInclude Include="StringHelper.hpp" />
     <ClInclude Include="VectorHelper.hpp" />
   </ItemGroup>

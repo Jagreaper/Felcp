@@ -15,6 +15,18 @@
     <ClCompile Include="XmlObject.cpp">
       <Filter>Type</Filter>
     </ClCompile>
+    <ClCompile Include="XmlElement.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlNamedObject.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlValueTypeObject.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlObjectAttribute.cpp">
+      <Filter>Type</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
@@ -24,6 +36,21 @@
       <Filter>Type</Filter>
     </ClInclude>
     <ClInclude Include="XmlObject.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlAttribute.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlElement.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlNamedObject.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlValueTypeObject.hpp">
+      <Filter>Type</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlObjectAttribute.hpp">
       <Filter>Type</Filter>
     </ClInclude>
   </ItemGroup>

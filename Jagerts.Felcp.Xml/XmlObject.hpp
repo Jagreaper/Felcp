@@ -1,68 +1,55 @@
 #pragma once
 
 #include "Jagerts.Felcp.Shared\Common.hpp"
+#include "Jagerts.Felcp.Helpers\Serializable.hpp"
+#include "Jagerts.Felcp.Helpers\Deserializable.hpp"
+#include "Jagerts.Felcp.Xml\XmlNamedObject.hpp"
+#include "Jagerts.Felcp.Xml\XmlValueTypeObject.hpp"
+#include "Jagerts.Felcp.Xml\XmlObjectAttribute.hpp"
 #include "XmlFile.hpp"
 #include <vector>
 #include <functional>
 
+#define jfxXmlObjectAddBody(TYPE, INDEX) \
+TYPE* ptr = (TYPE*)this->GetElementsArray()->at(INDEX).Add(); \
+*ptr = game_object \
+
+#define jfxXmlObjectAddHeaderDefine(TYPE) void Add(const TYPE game_object)
+
+#define jfxXmlObjectAddHeader(TYPE, INDEX) \
+jfxXmlObjectAddHeaderDefine(TYPE) \
+{ \
+	jfxXmlObjectAddBody(TYPE, INDEX); \
+} \
+
+#define jfxXmlObjAddSourceDefine(CLASS, TYPE) void CLASS::Add(const TYPE game_object)
+
+#define jfxXmlObjAddSource(CLASS, TYPE, INDEX) \
+jfxXmlObjAddSourceDefine(CLASS, TYPE) \
+{ \
+	jfxXmlObjectAddBody(TYPE, INDEX); \
+} \
+
+#define jfxXmlObjAddNameHeaderDefine(NAME, TYPE) void AddNAME(const TYPE game_object)
+
+#define jfxXmlObjectAddNameHeader(NAME, TYPE, INDEX) \
+jfxXmlObjAddNameHeaderDefine(NAME, TYPE) \
+{ \
+	jfxXmlObjectAddBody(TYPE, INDEX); \
+} \
+
+#define jfxXmlObjAddNameSourceDefine(NAME, CLASS, TYPE) void CLASS::AddNAME(const TYPE game_object)
+
+#define jfxXmlObjectAddNameSource(NAME, CLASS, TYPE, INDEX) \
+jfxXmlObjAddNameSourceDefine(NAME, CLASS, TYPE) \
+{ \
+	jfxXmlObjectAddBody(TYPE, INDEX); \
+} \
+
 namespace Jagerts::Felcp::Xml
 {
-	template<class T>
-	class Serializable
-	{
-	public:
-		virtual void Serialize(T* output) = 0;
-	};
-
-	template<class T>
-	class Deserializable
-	{
-	public:
-		virtual void Deserialize(const T& input) = 0;
-	};
-
-	using XmlFileSerializable = Serializable<XmlFile>;
-	using XmlFileDeserializable = Deserializable<XmlFile>;
-	using XmlElementSerializable = Serializable<XmlElement>;
-	using XmlElementDeserializable = Deserializable<XmlElement>;
-
-	enum class XmlObjectAttributeType
-	{
-		Short,
-		UShort,
-		Int,
-		UInt,
-		LongLong,
-		ULongLong,
-		Float,
-		Double,
-		Boolean,
-		String,
-	};
-
-	class JAGERTS_FELCP_XML_API XmlNamedObject
-	{
-	public:
-		void SetName(const std::string name);
-		const std::string& GetName() const;
-	private:
-		std::string _name;
-	};
-
-	class JAGERTS_FELCP_XML_API XmlObjectAttribute : public XmlNamedObject
-	{
-	public:
-		XmlObjectAttribute(std::string name, void* value, XmlObjectAttributeType type);
-		void SetValue(void* const value);
-		void* const& GetValue() const;
-		void SetType(const XmlObjectAttributeType type);
-		const XmlObjectAttributeType& GetType() const;
-		using XmlNamedObject::SetName;
-		using XmlNamedObject::GetName;
-	private:
-		void* _value;
-		XmlObjectAttributeType _type;
-	};
+	using XmlElementSerializable = Jagerts::Felcp::Helpers::Serializable<XmlElement>;
+	using XmlElementDeserializable = Jagerts::Felcp::Helpers::Deserializable<XmlElement>;
 
 	class XmlObject;
 
@@ -82,8 +69,7 @@ namespace Jagerts::Felcp::Xml
 
 		XmlObject* Add();
 		void Clear();
-		using XmlNamedObject::SetName;
-		using XmlNamedObject::GetName;
+		jfxUsingXmlNamedObject;
 	private:
 		std::string _name;
 		std::vector<XmlObject*> _elements;
@@ -92,7 +78,7 @@ namespace Jagerts::Felcp::Xml
 		friend class XmlObject;
 	};
 
-	class JAGERTS_FELCP_XML_API XmlObject : public XmlNamedObject, public XmlElementSerializable, public XmlElementDeserializable
+	class JAGERTS_FELCP_XML_API XmlObject : public XmlNamedObject, public XmlValueTypeObject, public XmlElementSerializable, public XmlElementDeserializable
 	{
 	public:
 		void Serialize(XmlElement* output);
@@ -140,11 +126,9 @@ namespace Jagerts::Felcp::Xml
 
 		void Clear();
 		std::vector<XmlObjectArray>* GetElementsArray();
-		using XmlNamedObject::SetName;
-		using XmlNamedObject::GetName;
+		jfxUsingXmlValueTypeObject;
+		jfxUsingXmlNamedObject;
 	private:
-		void* _value = NULL;
-		XmlObjectAttributeType _type;
 		std::string _name;
 		std::vector<XmlObjectAttribute> _attributes;
 		std::vector<XmlObject*> _elements;

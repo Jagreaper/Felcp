@@ -19,13 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="XmlElement.cpp" />
     <ClCompile Include="XmlFile.cpp" />
+    <ClCompile Include="XmlNamedObject.cpp" />
     <ClCompile Include="XmlObject.cpp" />
+    <ClCompile Include="XmlObjectAttribute.cpp" />
+    <ClCompile Include="XmlValueTypeObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp" />
+    <ClInclude Include="XmlAttribute.hpp" />
+    <ClInclude Include="XmlElement.hpp" />
     <ClInclude Include="XmlFile.hpp" />
+    <ClInclude Include="XmlNamedObject.hpp" />
     <ClInclude Include="XmlObject.hpp" />
+    <ClInclude Include="XmlObjectAttribute.hpp" />
+    <ClInclude Include="XmlValueTypeObject.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

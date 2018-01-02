@@ -26,11 +26,7 @@ public:
 		return &this->GameObjects[this->GameObjects.size() - 1];
 	}
 
-	void Add(const XmlGameObject game_object)
-	{
-		XmlGameObject* ptr = (XmlGameObject*)this->GetElementsArray()->at(0).Add();
-		*ptr = game_object;
-	}
+	jfxXmlObjectAddHeader(XmlGameObject, 0);
 
 	std::vector<XmlGameObject> GameObjects;
 private:

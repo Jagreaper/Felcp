@@ -19,6 +19,12 @@
     <ClInclude Include="Nullable.hpp">
       <Filter>Types</Filter>
     </ClInclude>
+    <ClInclude Include="Serializable.hpp">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Deserializable.hpp">
+      <Filter>Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StringHelper.cpp">
