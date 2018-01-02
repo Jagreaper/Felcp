@@ -75,35 +75,37 @@ void RawImageData::ToImage(Image* image)
 {
 	image->SetSize(this->_width, this->_height);
 	image->SetData(this->_data, this->_size);
-	if (this->_pixel_size == 1)
+
+	switch (this->_pixel_size)
 	{
+	case 1:
 		ChannelInfo info[1];
 		info[0].Type = ChannelType::Gray;
 		image->SetChannels(info, this->_pixel_size);
-	}
-	else if (this->_pixel_size == 2)
-	{
+		break;
+	case 2:
 		ChannelInfo info[2];
 		info[0].Type = ChannelType::Gray;
 		info[1].Type = ChannelType::Alpha;
 		image->SetChannels(info, this->_pixel_size);
-	}
-	else if (this->_pixel_size == 3)
-	{
+		break;
+	case 3:
 		ChannelInfo info[3];
 		info[0].Type = ChannelType::Red;
 		info[1].Type = ChannelType::Green;
 		info[2].Type = ChannelType::Blue;
 		image->SetChannels(info, this->_pixel_size);
-	}
-	else if (this->_pixel_size == 4)
-	{
+		break;
+	case 4:
 		ChannelInfo info[4];
 		info[0].Type = ChannelType::Red;
 		info[1].Type = ChannelType::Green;
 		info[2].Type = ChannelType::Blue;
 		info[3].Type = ChannelType::Alpha;
 		image->SetChannels(info, this->_pixel_size);
+		break;
+	default:
+		throw new std::runtime_error("Pixel size not supported");
 	}
 
 	image->CreateDefaults();
