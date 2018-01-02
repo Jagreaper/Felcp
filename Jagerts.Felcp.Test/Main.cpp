@@ -23,6 +23,8 @@ void EncodeXml()
 int main()
 #endif
 #ifdef RELEASE
+#include <Windows.h>
+
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #endif
 {
