@@ -66,37 +66,37 @@ namespace Jagerts::Felcp::Xml
 
 	class XmlObject;
 
-	class XmlObjectArray : public XmlNamedObject
+	class JAGERTS_FELCP_XML_API XmlObjectArray : public XmlNamedObject
 	{
 	public:
 		template<class XmlType>
-		void Register(std::vector<XmlType>* elements, std::function<XmlObject*()> constr)
+		void Register(const std::vector<XmlType>* elements, std::function<XmlObject*()> constr)
 		{
 			for (int index = 0; index < elements->size(); index++)
-				this->_elements->push_back(&(*elements)[index]);
+				this->_elements.push_back((XmlObject*)&(*elements)[index]);
 			
-			this->constr = _constr;
+			this->_constr = constr;
 		}
 
-		std::vector<XmlObject*>* const& GetElements() const;
+		std::vector<XmlObject*>* GetElements();
+
+		XmlObject* Add();
 		void Clear();
 		using XmlNamedObject::SetName;
 		using XmlNamedObject::GetName;
 	private:
 		std::string _name;
-		std::vector<XmlObject*>* _elements = NULL;
+		std::vector<XmlObject*> _elements;
 		std::function<XmlObject*()> _constr;
 
 		friend class XmlObject;
 	};
 
-	class JAGERTS_FELCP_XML_API XmlObject : public XmlNamedObject, public XmlElementSerializable, public XmlElementDeserializable, public XmlFileSerializable, public XmlFileDeserializable
+	class JAGERTS_FELCP_XML_API XmlObject : public XmlNamedObject, public XmlElementSerializable, public XmlElementDeserializable
 	{
 	public:
 		void Serialize(XmlElement* output);
 		void Deserialize(const XmlElement& input);
-		void Serialize(XmlFile* output);
-		void Deserialize(const XmlFile& input);
 	protected:
 	#define REGISTER_ATTRIBUTE_TYPE(TYPE) \
 		void RegisterAttribute(const std::string name, TYPE* value); \
@@ -128,7 +128,18 @@ namespace Jagerts::Felcp::Xml
 		REGISTER_VALUE_TYPE(std::string)
 #undef REGISTER_VALUE_TYPE
 		void RegisterElement(XmlObject* element);
+
+		template<class XmlType>
+		void RegisterArray(const std::string name, const std::vector<XmlType>* elements, std::function<XmlObject*()> constr)
+		{
+			XmlObjectArray xml_array;
+			xml_array.SetName(name);
+			xml_array.Register(elements, constr);
+			this->_elements_array.push_back(xml_array);
+		}
+
 		void Clear();
+		std::vector<XmlObjectArray>* GetElementsArray();
 		using XmlNamedObject::SetName;
 		using XmlNamedObject::GetName;
 	private:

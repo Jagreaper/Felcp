@@ -1,4 +1,5 @@
 #include "Jagerts.Felcp.Xml\XmlFile.hpp"
+#include "Jagerts.Felcp.Xml\XmlObject.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging\ImageDecoder.hpp"
@@ -6,6 +7,35 @@
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::IO::Imaging;
+
+class XmlGameObject : public XmlObject
+{
+public:
+	XmlGameObject()
+	{
+		this->SetName("GameObject");
+		this->RegisterAttribute("Health", &this->_health);
+		this->RegisterAttribute("Armor", &this->_armor);
+		this->RegisterArray("GameObject", &this->GameObjects, std::bind(&XmlGameObject::XmlConstructor, this));
+	}
+
+	XmlGameObject* XmlConstructor()
+	{
+		this->GameObjects.push_back(XmlGameObject());
+		return &this->GameObjects[this->GameObjects.size() - 1];
+	}
+
+	void Add(const XmlGameObject game_object)
+	{
+		XmlGameObject* ptr = (XmlGameObject*)this->GetElementsArray()->at(0).Add();
+		*ptr = game_object;
+	}
+
+	std::vector<XmlGameObject> GameObjects;
+private:
+	float _health = 10;
+	double _armor = 5;
+};
 
 void EncodeXml()
 {
@@ -30,6 +60,14 @@ void DecodeXml()
 	xml_decoder.TryDecode(xml_path, &xml);
 }
 
+void SerializeXml()
+{
+	XmlElement element;
+	XmlGameObject game_object;
+	game_object.Add(game_object);
+	game_object.Serialize(&element);
+}
+
 #ifdef DEBUG
 int main()
 #endif
@@ -39,5 +77,5 @@ int main()
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #endif
 {
-	ImageDecoder decoder;
+	SerializeXml();
 }

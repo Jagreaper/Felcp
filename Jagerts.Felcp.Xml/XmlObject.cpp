@@ -1,5 +1,9 @@
 #include "XmlObject.hpp"
 #include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include <iomanip>
+#include <locale>
+#include <sstream>
+#include <string>
 
 using namespace Jagerts::Felcp::Xml;
 
@@ -40,22 +44,31 @@ const XmlObjectAttributeType& XmlObjectAttribute::GetType() const
 	return this->_type;
 }
 
-std::vector<XmlObject*>* const& XmlObjectArray::GetElements() const
+std::vector<XmlObject*>* XmlObjectArray::GetElements()
 {
-	return this->_elements;
+	return &this->_elements;
+}
+
+XmlObject* XmlObjectArray::Add()
+{
+	XmlObject* ptr = this->_constr();
+	this->_elements.push_back(ptr);
+	return ptr;
 }
 
 void XmlObjectArray::Clear()
 {
 	this->_name.clear();
-	this->_elements = NULL;
+	this->_elements.clear();
 	this->_constr = NULL;
 }
 
 #define _CAST_NUMBER_CASE(TYPE, ATTRIBUTE, VALUE) \
 case XmlObjectAttributeType::ATTRIBUTE: \
 { \
-	return std::to_string(*(TYPE*)VALUE); \
+		std::ostringstream stream; \
+		stream << *(TYPE*)VALUE; \
+		return stream.str(); \
 } \
 
 std::string CastToString(void* value, const XmlObjectAttributeType& type)
@@ -68,8 +81,13 @@ std::string CastToString(void* value, const XmlObjectAttributeType& type)
 	_CAST_NUMBER_CASE(unsigned int, UInt, value)
 	_CAST_NUMBER_CASE(long long, LongLong, value)
 	_CAST_NUMBER_CASE(unsigned long long, ULongLong, value)
-	_CAST_NUMBER_CASE(short, Float, value)
-	_CAST_NUMBER_CASE(short, Double, value)
+	case XmlObjectAttributeType::Float:
+	{
+		std::ostringstream stream;
+		stream << *(float*)value;
+		return stream.str();
+	}
+	_CAST_NUMBER_CASE(double, Double, value)
 	case XmlObjectAttributeType::Boolean:
 	{
 		bool c_value = (*(bool*)value);
@@ -99,13 +117,16 @@ void XmlObject::Serialize(XmlElement* output)
 
 	for (int index = 0; index < this->_elements_array.size(); index++)
 	{
-		for (const XmlObjectArray& object_array : this->_elements_array)
+		for (XmlObjectArray& object_array : this->_elements_array)
 		{
-			for (XmlObject*& object : *object_array.GetElements())
+			if (object_array.GetElements()->size() > 0)
 			{
-				XmlElement element;
-				object->Serialize(&element);
-				output->AddElement(element);
+				for (XmlObject*& object : *object_array.GetElements())
+				{
+					XmlElement element;
+					object->Serialize(&element);
+					output->AddElement(element);
+				}
 			}
 		}
 	}
@@ -285,6 +306,11 @@ void XmlObject::Clear()
 	this->_elements_array.clear();
 	this->_name.clear();
 	this->_value = NULL;
+}
+
+std::vector<XmlObjectArray>* XmlObject::GetElementsArray()
+{
+	return &this->_elements_array;
 }
 
 #define _REGISTER_VALUE_TYPE(TYPE, ENUM_TYPE) \
