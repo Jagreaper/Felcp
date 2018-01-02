@@ -112,7 +112,8 @@
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+if not exist "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,7 +134,8 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+if not exist "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -160,7 +162,8 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+if not exist "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -187,7 +190,8 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Jagerts.Felcp.Test\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+if not exist "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)lib\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
