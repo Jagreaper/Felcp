@@ -10,27 +10,16 @@
 #include <vector>
 #include <functional>
 
+/// Add Method Body
 #define jfxXmlObjectAddBody(TYPE, INDEX) \
 TYPE* ptr = (TYPE*)this->GetElementsArray()->at(INDEX).Add(); \
 *ptr = game_object \
+///
 
-#define jfxXmlObjectAddHeaderDefine(TYPE) void Add(const TYPE game_object)
+/// Add Header Definitions
+#define jfxXmlObjAddNameHeaderDefine(NAME, TYPE) void NAME(const TYPE game_object)
 
-#define jfxXmlObjectAddHeader(TYPE, INDEX) \
-jfxXmlObjectAddHeaderDefine(TYPE) \
-{ \
-	jfxXmlObjectAddBody(TYPE, INDEX); \
-} \
-
-#define jfxXmlObjAddSourceDefine(CLASS, TYPE) void CLASS::Add(const TYPE game_object)
-
-#define jfxXmlObjAddSource(CLASS, TYPE, INDEX) \
-jfxXmlObjAddSourceDefine(CLASS, TYPE) \
-{ \
-	jfxXmlObjectAddBody(TYPE, INDEX); \
-} \
-
-#define jfxXmlObjAddNameHeaderDefine(NAME, TYPE) void AddNAME(const TYPE game_object)
+#define jfxXmlObjectAddHeaderDefine(TYPE) jfxXmlObjAddNameHeaderDefine(Add, TYPE)
 
 #define jfxXmlObjectAddNameHeader(NAME, TYPE, INDEX) \
 jfxXmlObjAddNameHeaderDefine(NAME, TYPE) \
@@ -38,13 +27,64 @@ jfxXmlObjAddNameHeaderDefine(NAME, TYPE) \
 	jfxXmlObjectAddBody(TYPE, INDEX); \
 } \
 
-#define jfxXmlObjAddNameSourceDefine(NAME, CLASS, TYPE) void CLASS::AddNAME(const TYPE game_object)
+#define jfxXmlObjectAddHeader(TYPE, INDEX) jfxXmlObjectAddNameHeader(Add, TYPE, INDEX)
+///
+
+/// Add Source Definitions
+#define jfxXmlObjAddNameSourceDefine(NAME, CLASS, TYPE) void CLASS::NAME(const TYPE game_object)
+
+#define jfxXmlObjAddSourceDefine(CLASS, TYPE) jfxXmlObjAddNameSourceDefine(Add, CLASS, TYPE)
 
 #define jfxXmlObjectAddNameSource(NAME, CLASS, TYPE, INDEX) \
 jfxXmlObjAddNameSourceDefine(NAME, CLASS, TYPE) \
 { \
 	jfxXmlObjectAddBody(TYPE, INDEX); \
 } \
+
+#define jfxXmlObjAddSource(CLASS, TYPE, INDEX) jfxXmlObjectAddNameSource(Add, CLASS, TYPE, INDEX)
+///
+
+/// Constructor Method Body
+#define jfxXmlArrayConstructorBody(XML_OBJECT, ARRAY) \
+ARRAY.push_back(XML_OBJECT()); \
+XML_OBJECT* xml_object = &ARRAY[ARRAY.size() - 1]; \
+xml_object->Register(); \
+return xml_object \
+
+#define jfxXmlArrayConstructorBodyPtr(XML_OBJECT, ARRAY) \
+ARRAY->push_back(XML_OBJECT()); \
+XML_OBJECT* xml_object = &(*ARRAY)[ARRAY->size() - 1]; \
+xml_object->Register(); \
+return xml_object \
+///
+
+/// Constructor Header Definitions
+#define jfxXmlArrayConstructorNameHeaderDefine(NAME, XML_OBJECT) XML_OBJECT* NAME()
+
+#define jfxXmlArrayConstructorHeaderDefine(XML_OBJECT) XML_OBJECT* jfxXmlArrayConstructorNameHeaderDefine(XmlConstructor, XML_OBJECT)
+
+#define jfxXmlArrayConstructorNameHeader(NAME, XML_OBJECT, ARRAY) \
+jfxXmlArrayConstructorNameHeaderDefine(NAME, XML_OBJECT) \
+{ \
+	jfxXmlArrayConstructorBody(XML_OBJECT, ARRAY); \
+} \
+
+#define jfxXmlArrayConstructorHeader(XML_OBJECT, ARRAY) jfxXmlArrayConstructorNameHeader(XmlConstructor, XML_OBJECT, ARRAY)
+///
+
+/// Constructor Source Definitions
+#define jfxXmlArrayConstructorNameSourceDefine(NAME, CLASS, XML_OBJECT) XML_OBJECT* CLASS::NAME()
+
+#define jfxXmlArrayConstructorSourceDefine(CLASS, XML_OBJECT) XML_OBJECT* jfxXmlArrayConstructorNameSourceDefine(XmlConstructor, CLASS, XML_OBJECT)
+
+#define jfxXmlArrayConstructorNameSource(NAME, CLASS, XML_OBJECT, ARRAY) \
+jfxXmlArrayConstructorNameSourceDefine(NAME, CLASS, XML_OBJECT) \
+{ \
+	jfxXmlArrayConstructorBody(XML_OBJECT, ARRAY); \
+} \
+
+#define jfxXmlArrayConstructorSource(CLASS, XML_OBJECT, ARRAY) jfxXmlArrayConstructorNameSource(XmlConstructor, CLASS, XML_OBJECT, ARRAY)
+///
 
 namespace Jagerts::Felcp::Xml
 {

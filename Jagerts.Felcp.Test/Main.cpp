@@ -20,14 +20,7 @@ public:
 		this->RegisterValue(&this->_value);
 	}
 
-	XmlGameObject* XmlConstructor()
-	{
-		this->GameObjects.push_back(XmlGameObject());
-		XmlGameObject* game_object = &this->GameObjects[this->GameObjects.size() - 1];
-		game_object->Register();
-		return game_object;
-	}
-
+	jfxXmlArrayConstructorHeader(XmlGameObject, this->GameObjects);
 	jfxXmlObjectAddHeader(XmlGameObject, 0);
 
 	std::vector<XmlGameObject> GameObjects;
