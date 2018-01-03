@@ -32,7 +32,7 @@ namespace Jagerts::Felcp::Xml
 		void SetType(const XmlObjectValueType type);
 		const XmlObjectValueType& GetType() const;
 	private:
-		void* _value = NULL;
+		void* _value = nullptr;
 		XmlObjectValueType _type;
 	};
 }
