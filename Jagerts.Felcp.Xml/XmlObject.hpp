@@ -81,6 +81,7 @@ namespace Jagerts::Felcp::Xml
 	class JAGERTS_FELCP_XML_API XmlObject : public XmlNamedObject, public XmlValueTypeObject, public XmlElementSerializable, public XmlElementDeserializable
 	{
 	public:
+		virtual void Register() = 0;
 		void Serialize(XmlElement* output);
 		void Deserialize(const XmlElement& input);
 	protected:

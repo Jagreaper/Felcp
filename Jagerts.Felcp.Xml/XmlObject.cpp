@@ -145,7 +145,6 @@ void SetDefaultValue(void* value, const XmlObjectValueType& type)
 
 void CastFromString(void* value, XmlObjectValueType type, std::string string)
 {
-	*(double*)value = std::stod(string);
 	switch (type)
 	{
 	case XmlObjectValueType::Short:
@@ -190,7 +189,7 @@ void CastFromString(void* value, XmlObjectValueType type, std::string string)
 	}
 	case XmlObjectValueType::Boolean:
 	{
-		*(std::string*)value = (string == "true" || string == "1") ? true : false;
+		*(bool*)value = (string == "true" || string == "1") ? true : false;
 		break;
 	}
 	case XmlObjectValueType::String:
