@@ -80,13 +80,17 @@ void DerializeXml()
 	game_object.Deserialize(xml.GetElements()->at(0));
 }
 
-#ifdef DEBUG
-int main()
-#endif
+#ifdef WIN32
 #ifdef RELEASE
 #include <Windows.h>
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
+#endif
+#ifdef DEBUG
+int main()
+#endif
+#else
+int main()
 #endif
 {
 	DerializeXml();
