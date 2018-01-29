@@ -23,5 +23,5 @@ Channel Pixel::GetChannel(ChannelType channel)
 			return Channel(this->_data + index, this->_channels[channel]);
 	}
 
-	throw std::exception("Channel not found exception");
+	throw std::runtime_error("Channel not found exception");
 }

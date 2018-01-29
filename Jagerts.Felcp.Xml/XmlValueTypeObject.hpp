@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
 
 #define jfxUsingXmlValueTypeObject \
 using XmlValueTypeObject::SetValue; \

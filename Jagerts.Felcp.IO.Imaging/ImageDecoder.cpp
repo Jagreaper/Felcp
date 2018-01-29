@@ -1,7 +1,7 @@
 #include "ImageDecoder.hpp"
-#include "Jagerts.Felcp.Imaging\Image.hpp"
+#include "Jagerts.Felcp.Imaging/Image.hpp"
 #define STB_IMAGE_IMPLEMENTATION
-#include <STB\stb_image.h>
+#include <STB/stb_image.h>
 
 using namespace Jagerts::Felcp::IO;
 using namespace Jagerts::Felcp::IO::Imaging;

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
-#include "Jagerts.Felcp.Helpers\Serializable.hpp"
-#include "Jagerts.Felcp.Helpers\Deserializable.hpp"
-#include "Jagerts.Felcp.Xml\XmlNamedObject.hpp"
-#include "Jagerts.Felcp.Xml\XmlValueTypeObject.hpp"
-#include "Jagerts.Felcp.Xml\XmlObjectAttribute.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
+#include "Jagerts.Felcp.Helpers/Serializable.hpp"
+#include "Jagerts.Felcp.Helpers/Deserializable.hpp"
+#include "Jagerts.Felcp.Xml/XmlNamedObject.hpp"
+#include "Jagerts.Felcp.Xml/XmlValueTypeObject.hpp"
+#include "Jagerts.Felcp.Xml/XmlObjectAttribute.hpp"
 #include "XmlFile.hpp"
 #include <vector>
 #include <functional>

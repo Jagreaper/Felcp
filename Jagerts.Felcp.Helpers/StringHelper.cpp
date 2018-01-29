@@ -33,4 +33,6 @@ std::string StringHelper::TrimLeading(const std::string& s)
 
 		chars++;
 	}
+
+	return s;
 }

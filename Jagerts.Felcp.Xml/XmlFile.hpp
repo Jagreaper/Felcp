@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Felcp.Xml\XmlAttribute.hpp"
-#include "Jagerts.Felcp.Xml\XmlElement.hpp"
+#include "Jagerts.Felcp.Xml/XmlAttribute.hpp"
+#include "Jagerts.Felcp.Xml/XmlElement.hpp"
 
 namespace Jagerts::Felcp::Xml
 {

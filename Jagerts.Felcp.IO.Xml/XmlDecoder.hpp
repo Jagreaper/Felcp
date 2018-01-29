@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
-#include "Jagerts.Felcp.Xml\XmlFile.hpp"
-#include "Jagerts.Felcp.IO\DecoderBase.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
+#include "Jagerts.Felcp.Xml/XmlFile.hpp"
+#include "Jagerts.Felcp.IO/DecoderBase.hpp"
 
 namespace Jagerts::Felcp::IO::Xml
 {

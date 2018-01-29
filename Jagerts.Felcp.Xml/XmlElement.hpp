@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
-#include "Jagerts.Felcp.Xml\XmlAttribute.hpp"
-#include "Jagerts.Felcp.Xml\XmlNamedObject.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
+#include "Jagerts.Felcp.Xml/XmlAttribute.hpp"
+#include "Jagerts.Felcp.Xml/XmlNamedObject.hpp"
 #include <vector>
 
 namespace Jagerts::Felcp::Xml

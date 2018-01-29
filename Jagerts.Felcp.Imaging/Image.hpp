@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
-#include "Channel.hpp"
-#include "Pixel.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
+#include "Jagerts.Felcp.Imaging/Channel.hpp"
+#include "Jagerts.Felcp.Imaging/Pixel.hpp"
 #include <vector>
 
 namespace Jagerts::Felcp::Imaging

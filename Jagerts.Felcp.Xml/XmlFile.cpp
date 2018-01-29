@@ -112,7 +112,7 @@ XmlElement ParseElementString(const char*& str_ptr)
 				}
 			}
 
-			*str_ptr++;
+			str_ptr++;
 		}
 	}
 	else if (*str_ptr == '/')
@@ -122,6 +122,8 @@ XmlElement ParseElementString(const char*& str_ptr)
 
 		return element;
 	}
+
+	throw std::runtime_error("Bad xml formatting");
 }
 
 void XmlFile::FromString(const std::string& string, XmlFile* file)

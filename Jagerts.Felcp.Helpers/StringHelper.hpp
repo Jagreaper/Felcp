@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Jagerts.Felcp.Shared\Common.hpp"
+#include "Jagerts.Felcp.Shared/Common.hpp"
 #include <sstream>
 #include <vector>
 
@@ -12,7 +12,7 @@ namespace Jagerts::Felcp::Helpers
 		Whitespace
 	};
 
-	class JAGERTS_FELCP_HELPERS_API StringHelper sealed
+	class JAGERTS_FELCP_HELPERS_API StringHelper
 	{
 	public:
 		static bool BeginsWith(const std::string& input, const std::string& match);

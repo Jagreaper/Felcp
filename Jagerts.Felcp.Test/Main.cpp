@@ -1,8 +1,8 @@
-#include "Jagerts.Felcp.Xml\XmlFile.hpp"
-#include "Jagerts.Felcp.Xml\XmlObject.hpp"
-#include "Jagerts.Felcp.IO.Xml\XmlEncoder.hpp"
-#include "Jagerts.Felcp.IO.Xml\XmlDecoder.hpp"
-#include "Jagerts.Felcp.IO.Imaging\ImageDecoder.hpp"
+#include "Jagerts.Felcp.Xml/XmlFile.hpp"
+#include "Jagerts.Felcp.Xml/XmlObject.hpp"
+#include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
+#include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
+#include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;

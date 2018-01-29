@@ -1,5 +1,5 @@
 #include "XmlObject.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
 #include <iomanip>
 #include <locale>
 #include <sstream>
