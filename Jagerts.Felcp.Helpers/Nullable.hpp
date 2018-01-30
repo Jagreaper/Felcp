@@ -3,7 +3,7 @@
 namespace Jagerts::Felcp::Helpers
 {
 	template <class T>
-	class Nullable sealed
+	class Nullable
 	{
 	public:
 		inline Nullable()
