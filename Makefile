@@ -102,7 +102,7 @@ rebuild-all: rebuild-debug rebuild-release
 
 clean-all: clean-debug clean-release
 
-dist: rebuild-all
+dist: dist-clean rebuild-all
 	@$(DIST_CMD)
 
 dist-clean:
