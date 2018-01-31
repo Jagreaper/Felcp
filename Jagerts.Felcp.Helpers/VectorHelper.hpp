@@ -11,7 +11,7 @@ namespace Jagerts::Felcp::Helpers
 		template<class T>
 		static inline bool Contains(const std::vector<T>& vector, const T& item)
 		{
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 			{
 				if (item == vector[index])
 					return true;
@@ -23,7 +23,7 @@ namespace Jagerts::Felcp::Helpers
 		template<class T>
 		static inline bool Contains(const std::vector<T>* vector, const T& item)
 		{
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 			{
 				if (item == vector->at(index))
 					return true;
@@ -36,7 +36,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Append(const std::vector<T>& v1, const std::vector<T>& v2)
 		{
 			std::vector<T> vector = v1;
-			for (int index = 0; index < v2.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2.size(); index++)
 				vector.push_back(v2[index]);
 
 			return vector;
@@ -46,7 +46,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Append(const std::vector<T>* v1, const std::vector<T>& v2)
 		{
 			std::vector<T> vector = &v1;
-			for (int index = 0; index < v2.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2.size(); index++)
 				vector.push_back(v2[index]);
 
 			return vector;
@@ -56,7 +56,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Append(const std::vector<T>& v1, const std::vector<T>* v2)
 		{
 			std::vector<T> vector = v1;
-			for (int index = 0; index < v2->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2->size(); index++)
 				vector.push_back(v2->at(index));
 
 			return vector;
@@ -66,7 +66,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Append(const std::vector<T>* v1, const std::vector<T>* v2)
 		{
 			std::vector<T> vector = &v1;
-			for (int index = 0; index < v2->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2->size(); index++)
 				vector.push_back(v2->at(index));
 
 			return vector;
@@ -75,28 +75,28 @@ namespace Jagerts::Felcp::Helpers
 		template<class T>
 		static inline void AddRange(std::vector<T>& v1, const std::vector<T>& v2)
 		{
-			for (int index = 0; index < v2.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2.size(); index++)
 				v1.push_back(v2[index]);
 		}
 
 		template<class T>
 		static inline void AddRange(std::vector<T>* v1, const std::vector<T>& v2)
 		{
-			for (int index = 0; index < v2.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2.size(); index++)
 				v1->push_back(v2[index]);
 		}
 
 		template<class T>
 		static inline void AddRange(std::vector<T>& v1, const std::vector<T>* v2)
 		{
-			for (int index = 0; index < v2->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2->size(); index++)
 				v1.push_back(v2->at(index));
 		}
 
 		template<class T>
 		static inline void AddRange(std::vector<T>* v1, const std::vector<T>* v2)
 		{
-			for (int index = 0; index < v2->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)v2->size(); index++)
 				v1->push_back(v2->at(index));
 		}
 
@@ -104,7 +104,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Where(const std::vector<T>& vector, F check)
 		{
 			std::vector<T> output;
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 			{
 				if (check(vector[index]))
 					output.push_back(vector[index]);
@@ -117,7 +117,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Where(const std::vector<T>* vector, F check)
 		{
 			std::vector<T> output;
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 			{
 				if (check(vector->at(index)))
 					output.push_back(vector->at(index));
@@ -130,7 +130,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<int> WhereIndicies(const std::vector<T>& vector, F check)
 		{
 			std::vector<int> output;
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 			{
 				if (check(vector[index]))
 					output.push_back(index);
@@ -143,7 +143,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<int> WhereIndicies(const std::vector<T>* vector, F check)
 		{
 			std::vector<int> output;
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 			{
 				if (check(vector->at(index)))
 					output.push_back(index);
@@ -156,7 +156,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline void Select(const std::vector<T>& vector, std::vector<R>& output, F action)
 		{
 			output.clear();
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 				output.push_back(action(vector[index]));
 		}
 
@@ -164,7 +164,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline void Select(const std::vector<T>* vector, std::vector<R>& output, F action)
 		{
 			output.clear();
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 				output.push_back(action(vector->at(index)));
 		}
 
@@ -172,7 +172,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline void Select(const std::vector<T>& vector, std::vector<R>* output, F action)
 		{
 			output->clear();
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 				output->push_back(action(vector[index]));
 		}
 
@@ -180,21 +180,21 @@ namespace Jagerts::Felcp::Helpers
 		static inline void Select(const std::vector<T>* vector, std::vector<R>* output, F action)
 		{
 			output->clear();
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 				output->push_back(action(vector->at(index)));
 		}
 
 		template<class T, class F>
 		static inline void Foreach(const std::vector<T>& vector, F action)
 		{
-			for (int index = 0; index < vector.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector.size(); index++)
 				action(vector[index]);
 		}
 
 		template<class T, class F>
 		static inline void Foreach(const std::vector<T>* vector, F action)
 		{
-			for (int index = 0; index < vector->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)vector->size(); index++)
 				action(vector->at(index));
 		}
 
@@ -202,7 +202,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline T Sum(const std::vector<T>& vector)
 		{
 			T output = vector[0];
-			for (int index = 1; index < vector.size(); index++)
+			for (unsigned int index = 1; index < (unsigned int)vector.size(); index++)
 				output += vector[index];
 
 			return output;
@@ -212,7 +212,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline T Sum(const std::vector<T>* vector)
 		{
 			T output = vector->at(0);
-			for (int index = 1; index < vector->size(); index++)
+			for (unsigned int index = 1; index < (unsigned int)vector->size(); index++)
 				output += vector->at(index);
 
 			return output;
@@ -222,7 +222,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Min(const std::vector<T>& left, const std::vector<T>& right)
 		{
 			std::vector<T> output = std::vector<T>(left.size() > right.size() ? left.size() : right.size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left.size())
 					output[index] = right[index];
@@ -239,7 +239,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Min(const std::vector<T>* left, const std::vector<T>& right)
 		{
 			std::vector<T> output = std::vector<T>(left->size() > right.size() ? left->size() : right.size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left->size())
 					output[index] = right[index];
@@ -256,7 +256,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Min(const std::vector<T>& left, const std::vector<T>* right)
 		{
 			std::vector<T> output = std::vector<T>(left.size() > right->size() ? left.size() : right->size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left.size())
 					output[index] = right->at(index);
@@ -273,7 +273,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Min(const std::vector<T>* left, const std::vector<T>* right)
 		{
 			std::vector<T> output = std::vector<T>(left->size() > right->size() ? left->size() : right->size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left->size())
 					output[index] = right->at(index);
@@ -290,7 +290,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Max(const std::vector<T>& left, const std::vector<T>& right)
 		{
 			std::vector<T> output = std::vector<T>(left.size() > right.size() ? left.size() : right.size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left.size())
 					output[index] = right[index];
@@ -307,7 +307,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Max(const std::vector<T>* left, const std::vector<T>& right)
 		{
 			std::vector<T> output = std::vector<T>(left->size() > right.size() ? left->size() : right.size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left->size())
 					output[index] = right[index];
@@ -324,7 +324,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Max(const std::vector<T>& left, const std::vector<T>* right)
 		{
 			std::vector<T> output = std::vector<T>(left.size() > right->size() ? left.size() : right->size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left.size())
 					output[index] = right->at(index);
@@ -341,7 +341,7 @@ namespace Jagerts::Felcp::Helpers
 		static inline std::vector<T> Max(const std::vector<T>* left, const std::vector<T>* right)
 		{
 			std::vector<T> output = std::vector<T>(left->size() > right->size() ? left->size() : right->size());
-			for (int index = 0; index < output.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)output.size(); index++)
 			{
 				if (index >= left->size())
 					output[index] = right->at(index);

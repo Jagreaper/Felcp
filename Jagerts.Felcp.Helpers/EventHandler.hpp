@@ -30,7 +30,7 @@ namespace Jagerts::Felcp::Helpers
 
 		inline void Execute(void* sender, const T& arg)
 		{
-			for (int index = 0; index < this->_events.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)this->_events.size(); index++)
 				this->_events[index](sender, arg);
 		}
 	private:

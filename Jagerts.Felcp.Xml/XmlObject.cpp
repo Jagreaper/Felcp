@@ -72,7 +72,7 @@ void XmlObject::Serialize(XmlElement* output)
 	for (const XmlObjectAttribute& attribute : this->_attributes)
 		output->AddAttribute(XmlAttribute(attribute.GetName(), CastToString(attribute.GetValue(), attribute.GetType())));
 
-	for (int index = 0; index < this->_elements.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_elements.size(); index++)
 	{
 		XmlElement element;
 		element.SetName(this->_elements[index]->GetName());
@@ -212,7 +212,7 @@ void XmlObject::Deserialize(const XmlElement& input)
 
 	for (const XmlAttribute& attribute : *input.GetAttributes())
 	{
-		for (int index = 0; index < this->_attributes.size(); index++)
+		for (unsigned int index = 0; index < (unsigned int)this->_attributes.size(); index++)
 		{
 			const XmlObjectAttribute& o_attribute = this->_attributes[index];
 			if (o_attribute.GetName() == attribute.Name)

@@ -26,7 +26,7 @@ std::string StringHelper::TrimLeading(const std::string& s)
 		return s;
 
 	const char* chars = s.c_str();
-	for (int index = 0; index < s.length(); index++)
+	for (unsigned int index = 0; index < (unsigned int)s.length(); index++)
 	{
 		if (isspace(chars[index]) == 0)
 			return std::string(chars);

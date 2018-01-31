@@ -83,7 +83,7 @@ void Image::SetData(unsigned char* data, unsigned int data_length)
 
 void Image::SetData(std::vector<unsigned char> data)
 {
-	for (int index = 0; index < data.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)data.size(); index++)
 		this->_data.push_back(data[index]);
 }
 
