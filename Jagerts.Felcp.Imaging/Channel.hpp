@@ -26,7 +26,7 @@ namespace Jagerts::Felcp::Imaging
 		unsigned char GetCodeValue();
 		double GetDecimalValue();
 	private:
-		unsigned char* _data = NULL;
+		unsigned char* _data = nullptr;
 		ChannelInfo _channel_info;
 	};
 }
