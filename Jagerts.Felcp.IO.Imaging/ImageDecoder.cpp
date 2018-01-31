@@ -75,7 +75,7 @@ const size_t RawImageData::GetSize() const
 void RawImageData::ToImage(Image* image)
 {
 	image->SetSize(this->_width, this->_height);
-	image->SetData(this->_data, this->_size);
+	image->SetData(this->_data, (unsigned int)this->_size);
 
 	switch (this->_pixel_size)
 	{

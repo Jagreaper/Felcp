@@ -204,7 +204,7 @@ void CastFromString(void* value, XmlObjectValueType type, std::string string)
 
 void XmlObject::Deserialize(const XmlElement& input)
 {
-	for (int index = 0; index < this->_attributes.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_attributes.size(); index++)
 	{
 		XmlObjectAttribute& attribute = this->_attributes[index];
 		SetDefaultValue(attribute.GetValue(), attribute.GetType());
@@ -223,7 +223,7 @@ void XmlObject::Deserialize(const XmlElement& input)
 	if (input.HasElementChildren())
 	{
 		const std::vector<XmlElement>* elements = input.GetChildren();
-		for (int index = 0; index < elements->size(); index++)
+		for (unsigned int index = 0; index < (unsigned int)elements->size(); index++)
 		{
 			const XmlElement& element = elements->at(index);
 			for (XmlObject*& object : this->_elements)

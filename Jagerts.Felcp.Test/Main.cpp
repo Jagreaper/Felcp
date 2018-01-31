@@ -40,7 +40,7 @@ void EncodeXml()
 	element.AddElement(XmlElement("GameObject"));
 	xml.AddElement(element);
 
-	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
+	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
 	XmlEncoder xml_encoder;
 	xml_encoder.TryEncode(xml_path, &xml);
 }
@@ -48,7 +48,7 @@ void EncodeXml()
 void DecodeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
+	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
 	XmlDecoder xml_decoder;
 	xml_decoder.TryDecode(xml_path, &xml);
 }
@@ -63,7 +63,7 @@ void SerializeXml()
 	XmlFile xml;
 	xml.AddElement(element);
 
-	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
+	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
 	XmlEncoder xml_encoder;
 	xml_encoder.TryEncode(xml_path, &xml);
 }
@@ -71,7 +71,7 @@ void SerializeXml()
 void DerializeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
+	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
 	XmlDecoder xml_decoder;
 	xml_decoder.TryDecode(xml_path, &xml);
 
@@ -80,18 +80,14 @@ void DerializeXml()
 	game_object.Deserialize(xml.GetElements()->at(0));
 }
 
-#ifdef WIN32
-#ifdef RELEASE
+#if (defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)) && RELEASE
 #include <Windows.h>
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
-#endif
-#ifdef DEBUG
-int main()
-#endif
 #else
 int main()
 #endif
 {
+	//SerializeXml();
 	DerializeXml();
 }
