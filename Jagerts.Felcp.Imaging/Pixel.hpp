@@ -14,10 +14,10 @@ namespace Jagerts::Felcp::Imaging
 		Channel GetChannel(unsigned int channel);
 		Channel GetChannel(ChannelType channel);
 	private:
-		ChannelInfo* _channels;
-		unsigned char* _data;
+		ChannelInfo* _channels = NULL;
+		unsigned char* _data = NULL;
 
-		unsigned int _num_channels;
-		unsigned int _data_length;
+		unsigned int _num_channels = 0;
+		unsigned int _data_length = 0;
 	};
 }

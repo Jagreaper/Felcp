@@ -3,6 +3,7 @@
 #include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
+#include <iostream>
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
@@ -25,9 +26,9 @@ public:
 
 	std::vector<XmlGameObject> GameObjects;
 private:
-	float _health;
-	double _armor;
-	std::string _value;
+	float _health = 0;
+	double _armor = 0;
+	std::string _value = "";
 };
 
 void EncodeXml()
@@ -40,7 +41,7 @@ void EncodeXml()
 	element.AddElement(XmlElement("GameObject"));
 	xml.AddElement(element);
 
-	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
+	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
 	XmlEncoder xml_encoder;
 	xml_encoder.TryEncode(xml_path, &xml);
 }
@@ -48,7 +49,7 @@ void EncodeXml()
 void DecodeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
+	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
 	XmlDecoder xml_decoder;
 	xml_decoder.TryDecode(xml_path, &xml);
 }
@@ -63,7 +64,7 @@ void SerializeXml()
 	XmlFile xml;
 	xml.AddElement(element);
 
-	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
+	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
 	XmlEncoder xml_encoder;
 	xml_encoder.TryEncode(xml_path, &xml);
 }
@@ -71,7 +72,7 @@ void SerializeXml()
 void DerializeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "D:/Users/James/Desktop/Xml Test.xml";
+	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
 	XmlDecoder xml_decoder;
 	xml_decoder.TryDecode(xml_path, &xml);
 
@@ -88,6 +89,6 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-	//SerializeXml();
-	DerializeXml();
+	SerializeXml();
+	//DerializeXml();
 }

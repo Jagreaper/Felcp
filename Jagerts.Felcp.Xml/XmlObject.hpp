@@ -99,7 +99,7 @@ namespace Jagerts::Felcp::Xml
 		template<class XmlType>
 		void Register(const std::vector<XmlType>* elements, std::function<XmlObject*()> constr)
 		{
-			for (int index = 0; index < elements->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)elements->size(); index++)
 				this->_elements.push_back((XmlObject*)&(*elements)[index]);
 			
 			this->_constr = constr;

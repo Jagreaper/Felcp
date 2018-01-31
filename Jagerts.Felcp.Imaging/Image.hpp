@@ -36,9 +36,9 @@ namespace Jagerts::Felcp::Imaging
 
 		std::vector<ChannelInfo> _channels;
 		std::vector<unsigned char> _data;
-		unsigned int _width;
-		unsigned int _height;
-		unsigned int _stride;
-		unsigned int _pixel_length;
+		unsigned int _width = 0;
+		unsigned int _height = 0;
+		unsigned int _stride = 0;
+		unsigned int _pixel_length = 0;
 	};
 }

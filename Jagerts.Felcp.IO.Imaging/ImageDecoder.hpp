@@ -29,10 +29,10 @@ namespace Jagerts::Felcp::IO::Imaging
 		void ToImage(Jagerts::Felcp::Imaging::Image* image);
 	private:
 		unsigned char* _data = NULL;
-	    int _width;
-		int _height;
-		int _pixel_size;
-		size_t _size;
+	    int _width = 0;
+		int _height = 0;
+		int _pixel_size = 0;
+		size_t _size = 0;
 	};
 
 	class JAGERTS_FELCP_IO_IMAGING_API ImageDecoder : public PathDecoderBase<Jagerts::Felcp::Imaging::Image*, void*>, public PathDecoderBase<RawImageData*, void*>
