@@ -9,7 +9,7 @@ TARGET_EXT = $(EXT_APP)
 INCLUDE_DIRS += 
 SRC_FILES += 
 LIB_DIRS += 
-LIB_FLAGS += $(SHARED_LIB)
+LIB_FLAGS +=
 LIB_PROJECTS = Jagerts.Felcp.Helpers Jagerts.Felcp.Xml Jagerts.Felcp.Imaging Jagerts.Felcp.IO Jagerts.Felcp.IO.Xml Jagerts.Felcp.IO.Imaging
 
 ### LANGUAGE VARIABLES ###
