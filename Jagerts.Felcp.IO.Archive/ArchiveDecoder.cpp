@@ -1,4 +1,5 @@
 #include "ArchiveDecoder.hpp"
+#include "Archive.hpp"
 #include "ArchiveFile.hpp"
 
 using namespace Jagerts::Felcp::IO::Archive;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Jagerts.Felcp.Shared/Common.hpp"
 #include <vector>
 #include <string>
 
@@ -13,7 +14,7 @@ namespace Jagerts::Felcp::IO::Archive
         Unmanaged,
     };
 
-    class Archive
+    class JAGERTS_FELCP_IO_ARCHIVE_API Archive
     {
     public:
         ~Archive();

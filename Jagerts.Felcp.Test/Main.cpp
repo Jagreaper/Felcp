@@ -4,6 +4,7 @@
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveDecoder.hpp"
+#include "Jagerts.Felcp.IO.Archive/Archive.hpp"
 #include <iostream>
 
 using namespace Jagerts::Felcp::Xml;

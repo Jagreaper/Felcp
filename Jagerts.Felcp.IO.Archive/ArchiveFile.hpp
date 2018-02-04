@@ -1,11 +1,12 @@
 #pragma once
 
+#include "Jagerts.Felcp.Shared/Common.hpp"
 #include <vector>
 #include <string>
 
 namespace Jagerts::Felcp::IO::Archive
 {
-    class ArchiveFile
+    class JAGERTS_FELCP_IO_ARCHIVE_API ArchiveFile
     {
     public:
         static ArchiveFile* Create(size_t size);
