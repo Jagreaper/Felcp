@@ -2,7 +2,7 @@
 
 using namespace Jagerts::Felcp::IO::Archive;
 
-ArchiveFile* const ArchiveFile::Create(size_t size)
+ArchiveFile* ArchiveFile::Create(size_t size)
 {
     return new ArchiveFile(size);
 }
@@ -15,6 +15,7 @@ void ArchiveFile::Free(const ArchiveFile* const file)
 ArchiveFile::ArchiveFile(size_t size)
 {
     this->_data = new char[size];
+    this->_size = size;
 }
 
 ArchiveFile::~ArchiveFile()
@@ -50,4 +51,9 @@ const char* ArchiveFile::GetData() const
 char* ArchiveFile::GetData()
 {
     return this->_data;
+}
+
+const size_t& ArchiveFile::GetSize() const
+{
+    return this->_size;
 }

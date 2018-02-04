@@ -3,11 +3,13 @@
 #include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
+#include "Jagerts.Felcp.IO.Archive/ArchiveDecoder.hpp"
 #include <iostream>
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::IO::Imaging;
+using namespace Jagerts::Felcp::IO::Archive;
 
 class XmlGameObject : public XmlObject
 {
@@ -89,6 +91,10 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-	SerializeXml();
+	const char* path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	Archive archive;
+	ArchiveDecoder decoder;
+	decoder.TryDecode(path, &archive);
+	//SerializeXml();
 	//DerializeXml();
 }

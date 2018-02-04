@@ -37,7 +37,7 @@ void Archive::AddFiles(const ArchiveFileType type, const std::vector<ArchiveFile
         this->AddFile(type, files[index]);
 }
 
-const ArchiveFile* Archive::GetFile(size_t index)
+const ArchiveFile* Archive::GetFile(size_t index) const
 {
     return this->_files[index];
 }

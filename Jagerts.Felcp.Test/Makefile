@@ -10,7 +10,7 @@ INCLUDE_DIRS +=
 SRC_FILES += 
 LIB_DIRS += 
 LIB_FLAGS +=
-LIB_PROJECTS = Jagerts.Felcp.Helpers Jagerts.Felcp.Xml Jagerts.Felcp.Imaging Jagerts.Felcp.IO Jagerts.Felcp.IO.Xml Jagerts.Felcp.IO.Imaging
+LIB_PROJECTS = Jagerts.Felcp.Helpers Jagerts.Felcp.Xml Jagerts.Felcp.Imaging Jagerts.Felcp.IO Jagerts.Felcp.IO.Xml Jagerts.Felcp.IO.Imaging Jagerts.Felcp.IO.Archive
 
 ### LANGUAGE VARIABLES ###
 COMPILIER = g++
