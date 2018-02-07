@@ -14,7 +14,7 @@ File::File(const std::string& path)
 
 const bool File::Exists() const
 {
-	std::ofstream stream(this->_path, std::ofstream::out | std::ofstream::app);
+	std::ifstream stream(this->_path, std::ifstream::in);
 	bool success = !(!stream);
 	stream.close();
 	return success;
@@ -23,6 +23,41 @@ const bool File::Exists() const
 void File::Create()
 {
 	std::ofstream stream(this->_path, std::ofstream::out | std::ofstream::trunc);
+
+	if(!stream)
+		throw std::runtime_error("File does not exists");
+
+	stream.close();
+}
+
+const size_t File::GetSize() const
+{
+	std::ifstream stream(this->_path, std::ifstream::in);
+
+	if(!stream)
+		throw std::runtime_error("File does not exists");
+
+	stream.seekg(0, stream.end);
+	size_t size = stream.tellg();
+	stream.close();
+	
+	return size;
+}
+
+void File::ReadAll(char** data_ptr, size_t* length_ptr) const
+{
+	std::ifstream stream(this->_path, std::ifstream::in);
+
+	if(!stream)
+		throw std::runtime_error("File does not exists");
+
+	stream.seekg(0, stream.end);
+	*length_ptr = stream.tellg();
+	*data_ptr = new char[*length_ptr];
+
+	stream.seekg(0, stream.beg);
+	stream.get(*data_ptr, *length_ptr);
+	
 	stream.close();
 }
 

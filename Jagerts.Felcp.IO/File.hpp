@@ -13,6 +13,8 @@ namespace Jagerts::Felcp::IO
 		File(const std::string& path);
 		const bool Exists() const;
 		void Create();
+		const size_t GetSize() const;
+		void ReadAll(char** data_ptr, size_t* length_ptr) const;
 #define OPEN_STREAM(STREAM_TYPE, STREAM_ARGS) \
 		void OpenStream(STREAM_TYPE* stream, int mode = STREAM_ARGS); \
 

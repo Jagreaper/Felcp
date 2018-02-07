@@ -84,18 +84,20 @@ void DerializeXml()
 	game_object.Deserialize(xml.GetElements()->at(0));
 }
 
+void CreateArchiveTest()
+{
+	const char* path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	Archive archive;
+}
+
 #if (defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)) && RELEASE
 #include <Windows.h>
-
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #else
 int main()
 #endif
 {
-	const char* path = "/Users/Jagreaper/Desktop/Xml Test.xml";
-	Archive archive;
-	ArchiveDecoder decoder;
-	decoder.TryDecode(path, &archive);
+
 	//SerializeXml();
 	//DerializeXml();
 }
