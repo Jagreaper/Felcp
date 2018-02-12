@@ -6,24 +6,26 @@
 
 namespace Jagerts::Felcp::IO::Archive
 {
+    class ArchiveFileItem;
+
+    enum class ArchiveFileItemType
+    {
+        Managed,
+        Unmanaged,
+    };
+
     class JAGERTS_FELCP_IO_ARCHIVE_API ArchiveFile
     {
     public:
-        static ArchiveFile* Create(size_t size);
-        static void Free(const ArchiveFile* const file);
-        void SetName(const std::string& name);
-        void SetExtension(const std::string& extension);
-        const std::string& GetName() const;
-        const std::string& GetExtension() const;
-        const char* GetData() const;
-        char* GetData();
-        const size_t& GetSize() const;
-    private:
-        ArchiveFile(size_t size);
         ~ArchiveFile();
-        std::string _name;
-        std::string _extension;
-        char* _data = NULL;
-        size_t _size;
+        void AddFile(const ArchiveFileItemType type, const ArchiveFileItem* file);
+        void AddFiles(const ArchiveFileItemType type, const ArchiveFileItem* files, size_t size);
+        void AddFiles(const ArchiveFileItemType type, const std::vector<ArchiveFileItem*>& files);
+
+        const ArchiveFileItem* GetFile(size_t index) const;
+        const size_t GetFileCount() const;
+    private:
+        std::vector<const ArchiveFileItem*> _files;
+        std::vector<const ArchiveFileItem*> _managed_files;
     };
 }

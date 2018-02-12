@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Archive.cpp">
+    <ClCompile Include="ArchiveFile.cpp">
       <Filter>Format</Filter>
     </ClCompile>
-    <ClCompile Include="ArchiveFile.cpp">
+    <ClCompile Include="ArchiveFileItem.cpp">
       <Filter>Format</Filter>
     </ClCompile>
     <ClCompile Include="ArchiveEncoder.cpp">
@@ -18,10 +18,10 @@
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
       <Filter>Shared</Filter>
     </ClInclude>
-    <ClInclude Include="Archive.hpp">
+    <ClInclude Include="ArchiveFile.hpp">
       <Filter>Format</Filter>
     </ClInclude>
-    <ClInclude Include="ArchiveFile.hpp">
+    <ClInclude Include="ArchiveFileItem.hpp">
       <Filter>Format</Filter>
     </ClInclude>
     <ClInclude Include="ArchiveEncoder.hpp">

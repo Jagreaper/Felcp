@@ -194,17 +194,17 @@ xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Fel
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Archive.cpp" />
+    <ClCompile Include="ArchiveFile.cpp" />
     <ClCompile Include="ArchiveDecoder.cpp" />
     <ClCompile Include="ArchiveEncoder.cpp" />
-    <ClCompile Include="ArchiveFile.cpp" />
+    <ClCompile Include="ArchiveFileIteam.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp" />
-    <ClInclude Include="Archive.hpp" />
+    <ClInclude Include="ArchiveFile.hpp" />
     <ClInclude Include="ArchiveDecoder.hpp" />
     <ClInclude Include="ArchiveEncoder.hpp" />
-    <ClInclude Include="ArchiveFile.hpp" />
+    <ClInclude Include="ArchiveFileItem.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

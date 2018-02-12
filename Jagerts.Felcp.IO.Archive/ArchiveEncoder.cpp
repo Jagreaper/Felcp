@@ -1,10 +1,10 @@
 #include "ArchiveEncoder.hpp"
-#include "Archive.hpp"
 #include "ArchiveFile.hpp"
+#include "ArchiveFileItem.hpp"
 
 using namespace Jagerts::Felcp::IO::Archive;
 
-bool ArchiveEncoder::TryEncode(std::ostream& source, Archive* input, void* arg)
+bool ArchiveEncoder::TryEncode(std::ostream& source, ArchiveFile* input, void* arg)
 {
     source << "ARCJ0000";
     source << input->GetFileCount();
@@ -12,7 +12,7 @@ bool ArchiveEncoder::TryEncode(std::ostream& source, Archive* input, void* arg)
     size_t offset = 0;
     for (size_t index = 0; index < input->GetFileCount(); index++)
     {
-        const ArchiveFile* file = input->GetFile(index);
+        const ArchiveFileItem* file = input->GetFile(index);
         source << file->GetName().size();
         source << file->GetName();
         source << file->GetExtension().size();
@@ -23,7 +23,7 @@ bool ArchiveEncoder::TryEncode(std::ostream& source, Archive* input, void* arg)
 
     for (size_t index = 0; index < input->GetFileCount(); index++)
     {
-        const ArchiveFile* file = input->GetFile(index);
+        const ArchiveFileItem* file = input->GetFile(index);
         source.write(file->GetData(), file->GetSize());
     }
 

@@ -1,59 +1,48 @@
+#include "ArchiveFileItem.hpp"
 #include "ArchiveFile.hpp"
 
 using namespace Jagerts::Felcp::IO::Archive;
 
-ArchiveFile* ArchiveFile::Create(size_t size)
-{
-    return new ArchiveFile(size);
-}
-
-void ArchiveFile::Free(const ArchiveFile* const file)
-{
-    delete file;
-}
-
-ArchiveFile::ArchiveFile(size_t size)
-{
-    this->_data = new char[size];
-    this->_size = size;
-}
-
 ArchiveFile::~ArchiveFile()
 {
-    delete[] this->_data;    
+    for (size_t index = 0; index < this->_managed_files.size(); index++)
+        ArchiveFileItem::Free(this->_managed_files[index]);
+
+    this->_managed_files.clear();
 }
 
-void ArchiveFile::SetName(const std::string& name)
+void ArchiveFile::AddFile(const ArchiveFileItemType type, const ArchiveFileItem* file)
 {
-    this->_name = name;
+    switch (type)
+    {
+    case ArchiveFileItemType::Managed:
+        this->_managed_files.push_back(file);
+    case ArchiveFileItemType::Unmanaged:
+        this->_files.push_back(file);
+        break;
+    default:
+        throw std::runtime_error("Invalid ArchiveFileItemType");
+    }
 }
 
-void ArchiveFile::SetExtension(const std::string& extension)
+void ArchiveFile::AddFiles(const ArchiveFileItemType type, const ArchiveFileItem* files, size_t size)
 {
-    this->_extension = extension;
+    for (size_t index = 0; index < size; index++)
+        this->AddFile(type, files + (unsigned int)index);
 }
 
-const std::string& ArchiveFile::GetName() const
+void ArchiveFile::AddFiles(const ArchiveFileItemType type, const std::vector<ArchiveFileItem*>& files)
 {
-    return this->_name;
+    for (size_t index = 0; index < files.size(); index++)
+        this->AddFile(type, files[index]);
 }
 
-const std::string& ArchiveFile::GetExtension() const
+const ArchiveFileItem* ArchiveFile::GetFile(size_t index) const
 {
-    return this->_extension;
+    return this->_files[index];
 }
 
-const char* ArchiveFile::GetData() const
+const size_t ArchiveFile::GetFileCount() const
 {
-    return this->_data;
-}
-
-char* ArchiveFile::GetData()
-{
-    return this->_data;
-}
-
-const size_t& ArchiveFile::GetSize() const
-{
-    return this->_size;
+    return this->_files.size();
 }

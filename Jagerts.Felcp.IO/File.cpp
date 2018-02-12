@@ -2,11 +2,6 @@
 
 using namespace Jagerts::Felcp::IO;
 
-File::File(const std::string path)
-{
-	this->_path = path;
-}
-
 File::File(const std::string& path)
 {
 	this->_path = path;
@@ -44,7 +39,7 @@ const size_t File::GetSize() const
 	return size;
 }
 
-void File::ReadAll(char** data_ptr, size_t* length_ptr) const
+const char* File::ReadAll(size_t* length_ptr, char** data_ptr) const
 {
 	std::ifstream stream(this->_path, std::ifstream::in);
 
@@ -53,12 +48,21 @@ void File::ReadAll(char** data_ptr, size_t* length_ptr) const
 
 	stream.seekg(0, stream.end);
 	*length_ptr = stream.tellg();
-	*data_ptr = new char[*length_ptr];
+	char* data = new char[*length_ptr];
 
 	stream.seekg(0, stream.beg);
-	stream.get(*data_ptr, *length_ptr);
+	stream.get(data, *length_ptr);
+
+	std::memcpy(&data_ptr, data, *length_ptr);
 	
 	stream.close();
+	return data;
+}
+
+void File::FreeData(const char*& data)
+{
+	delete[] data;
+	data = NULL;
 }
 
 #define _OPEN_STREAM(STREAM_TYPE)\

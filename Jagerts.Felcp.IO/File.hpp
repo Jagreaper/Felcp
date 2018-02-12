@@ -9,12 +9,12 @@ namespace Jagerts::Felcp::IO
 	class JAGERTS_FELCP_IO_API File
 	{
 	public:
-		File(const std::string path);
 		File(const std::string& path);
 		const bool Exists() const;
 		void Create();
 		const size_t GetSize() const;
-		void ReadAll(char** data_ptr, size_t* length_ptr) const;
+		const char* ReadAll(size_t* length_ptr, char** data = NULL) const;
+		void FreeData(const char*& data);
 #define OPEN_STREAM(STREAM_TYPE, STREAM_ARGS) \
 		void OpenStream(STREAM_TYPE* stream, int mode = STREAM_ARGS); \
 

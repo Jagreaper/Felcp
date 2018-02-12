@@ -1,12 +1,12 @@
 #include "ArchiveDecoder.hpp"
-#include "Archive.hpp"
 #include "ArchiveFile.hpp"
+#include "ArchiveFileItem.hpp"
 
 using namespace Jagerts::Felcp::IO::Archive;
 
 #define _GET(TYPE, VAR) TYPE VAR; source >> VAR
 
-bool ArchiveDecoder::TryDecode(std::istream& source, Archive* output, void* arg)
+bool ArchiveDecoder::TryDecode(std::istream& source, ArchiveFile* output, void* arg)
 {
     _GET(int, name);
     _GET(int, version);
@@ -15,7 +15,7 @@ bool ArchiveDecoder::TryDecode(std::istream& source, Archive* output, void* arg)
     std::vector<size_t> offsets;
     size_t b_offset = (sizeof(int) * 2) + sizeof(size_t);
 
-    ArchiveFile** files = new ArchiveFile*[file_count];
+    ArchiveFileItem** files = new ArchiveFileItem*[file_count];
     for (size_t index = 0; index < file_count; index++)
     {
         char* buffer;
@@ -38,7 +38,7 @@ bool ArchiveDecoder::TryDecode(std::istream& source, Archive* output, void* arg)
 
         _GET(size_t, length);
 
-        ArchiveFile* file = ArchiveFile::Create(length);
+        ArchiveFileItem* file = ArchiveFileItem::Create(length);
         file->SetName(name);
         file->SetExtension(ext);
         files[index] = file;
@@ -55,7 +55,7 @@ bool ArchiveDecoder::TryDecode(std::istream& source, Archive* output, void* arg)
         char* buffer = files[index]->GetData();
         source.get(buffer, size);
 
-        output->AddFile(ArchiveFileType::Managed, files[index]);
+        output->AddFile(ArchiveFileItemType::Managed, files[index]);
     }
 
     delete[] files;

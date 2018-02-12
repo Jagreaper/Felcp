@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{86FFA47C-848A-4CD0-B9D6-B40A47306C62}</ProjectGuid>
-    <RootNamespace>Jagerts::Felcp::IO::Imaging</RootNamespace>
+    <RootNamespace>JagertsFelcpIOImaging</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

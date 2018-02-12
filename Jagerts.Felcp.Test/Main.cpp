@@ -1,13 +1,16 @@
 #include "Jagerts.Felcp.Xml/XmlFile.hpp"
 #include "Jagerts.Felcp.Xml/XmlObject.hpp"
+#include "Jagerts.Felcp.IO/File.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveDecoder.hpp"
-#include "Jagerts.Felcp.IO.Archive/Archive.hpp"
+#include "Jagerts.Felcp.IO.Archive/ArchiveFile.hpp"
+#include "Jagerts.Felcp.IO.Archive/ArchiveFileItem.hpp"
 #include <iostream>
 
 using namespace Jagerts::Felcp::Xml;
+using namespace Jagerts::Felcp::IO;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::IO::Imaging;
 using namespace Jagerts::Felcp::IO::Archive;
@@ -86,8 +89,12 @@ void DerializeXml()
 
 void CreateArchiveTest()
 {
+	ArchiveFile archive;
+
 	const char* path = "/Users/Jagreaper/Desktop/Xml Test.xml";
-	Archive archive;
+	File file(path);
+	size_t size;
+	const char* data = file.ReadAll(&size);
 }
 
 #if (defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)) && RELEASE
@@ -97,7 +104,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-
+	CreateArchiveTest();
 	//SerializeXml();
 	//DerializeXml();
 }

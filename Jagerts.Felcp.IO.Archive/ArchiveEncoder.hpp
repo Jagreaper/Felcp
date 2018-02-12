@@ -5,12 +5,12 @@
 
 namespace Jagerts::Felcp::IO::Archive
 {
-	class Archive;
+	class ArchiveFile;
 	
-	class JAGERTS_FELCP_IO_ARCHIVE_API ArchiveEncoder : public StreamPathEncoder<Archive*, void*>
+	class JAGERTS_FELCP_IO_ARCHIVE_API ArchiveEncoder : public StreamPathEncoder<ArchiveFile*, void*>
 	{
 	public:
-		bool TryEncode(std::ostream& source, Archive* input, void* arg = NULL);
+		bool TryEncode(std::ostream& source, ArchiveFile* input, void* arg = NULL);
         using StreamPathEncoder::TryEncode;
 	};
 }

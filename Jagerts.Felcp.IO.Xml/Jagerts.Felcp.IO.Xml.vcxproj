@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{85AFF077-3666-4328-855F-13BF0971997A}</ProjectGuid>
-    <RootNamespace>Jagerts::Felcp::IO::Xml</RootNamespace>
+    <RootNamespace>JagertsFelcpIOXml</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
