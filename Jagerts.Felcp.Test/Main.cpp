@@ -8,6 +8,7 @@
 #include "Jagerts.Felcp.IO.Archive/ArchiveFile.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveFileItem.hpp"
 #include <iostream>
+#include <string>
 
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO;
@@ -91,10 +92,10 @@ void CreateArchiveTest()
 {
 	ArchiveFile archive;
 
-	const char* path = "/Users/Jagreaper/Desktop/Xml Test.xml";
-	File file(path);
-	size_t size;
-	const char* data = file.ReadAll(&size);
+	std::string path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	//File file(path);
+	//size_t size;
+	//const char* data = file.ReadAll(&size);
 }
 
 #if (defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)) && RELEASE
@@ -104,6 +105,10 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
+	const char* home_dir = getenv("HOME");
+
+	std::cout << home_dir << "\n";
+
 	CreateArchiveTest();
 	//SerializeXml();
 	//DerializeXml();

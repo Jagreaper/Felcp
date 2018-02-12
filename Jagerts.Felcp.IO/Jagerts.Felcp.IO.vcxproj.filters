@@ -32,5 +32,8 @@
     <ClInclude Include="File.hpp">
       <Filter>Misc</Filter>
     </ClInclude>
+    <ClInclude Include="Environment.hpp">
+      <Filter>Misc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
