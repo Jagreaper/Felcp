@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Felcp.IO", "Jagerts.Felcp.IO\Jagerts.Felcp.IO.vcxproj", "{9D4A4882-1D89-4140-B4BA-17936F7D95C6}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6AAAAFBD-A57F-48A1-A585-341646073C80}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Felcp.IO.Imaging", "Jagerts.Felcp.IO.Imaging\Jagerts.Felcp.IO.Imaging.vcxproj", "{86FFA47C-848A-4CD0-B9D6-B40A47306C62}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Felcp.IO.Archive", "Jagerts.Felcp.IO.Archive\Jagerts.Felcp.IO.Archive.vcxproj", "{A92EABEC-1268-4935-BE72-BB11C88B4B73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,14 @@ Global
 		{86FFA47C-848A-4CD0-B9D6-B40A47306C62}.Release|x64.Build.0 = Release|x64
 		{86FFA47C-848A-4CD0-B9D6-B40A47306C62}.Release|x86.ActiveCfg = Release|Win32
 		{86FFA47C-848A-4CD0-B9D6-B40A47306C62}.Release|x86.Build.0 = Release|Win32
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Debug|x64.ActiveCfg = Debug|x64
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Debug|x64.Build.0 = Debug|x64
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Debug|x86.ActiveCfg = Debug|Win32
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Debug|x86.Build.0 = Debug|Win32
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Release|x64.ActiveCfg = Release|x64
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Release|x64.Build.0 = Release|x64
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Release|x86.ActiveCfg = Release|Win32
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +111,7 @@ Global
 		{97C4307C-F237-4D4B-A8E6-FA2FD57F8F9D} = {DEC2959D-B986-4B81-9CBB-1CE19FE4873D}
 		{A1AF1D62-DC13-4959-BCC5-08BF4B7004A2} = {6AAAAFBD-A57F-48A1-A585-341646073C80}
 		{86FFA47C-848A-4CD0-B9D6-B40A47306C62} = {7CCA23AD-91B9-4D1E-AC32-E178BD97AC55}
+		{A92EABEC-1268-4935-BE72-BB11C88B4B73} = {7CCA23AD-91B9-4D1E-AC32-E178BD97AC55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F60F9B0-04E3-4C46-9CEC-D1B9E17A029D}

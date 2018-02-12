@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{51CAB373-8353-49BE-817C-49E7A67F1A57}</ProjectGuid>
-    <RootNamespace>JagertsFelcpTest</RootNamespace>
+    <RootNamespace>Jagerts::Felcp::Test</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,6 +151,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Jagerts.Felcp.Imaging\Jagerts.Felcp.Imaging.vcxproj">
       <Project>{a1af1d62-dc13-4959-bcc5-08bf4b7004a2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Jagerts.Felcp.IO.Archive\Jagerts.Felcp.IO.Archive.vcxproj">
+      <Project>{a92eabec-1268-4935-be72-bb11c88b4b73}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Jagerts.Felcp.IO.Imaging\Jagerts.Felcp.IO.Imaging.vcxproj">
       <Project>{86ffa47c-848a-4cd0-b9d6-b40a47306c62}</Project>

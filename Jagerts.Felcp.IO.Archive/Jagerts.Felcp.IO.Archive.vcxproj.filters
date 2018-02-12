@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Archive.cpp">
+      <Filter>Format</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveFile.cpp">
+      <Filter>Format</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveEncoder.cpp">
+      <Filter>Encoders</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveDecoder.cpp">
+      <Filter>Decoders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Archive.hpp">
+      <Filter>Format</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchiveFile.hpp">
+      <Filter>Format</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchiveEncoder.hpp">
+      <Filter>Encoders</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchiveDecoder.hpp">
+      <Filter>Decoders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{981a97a2-3bf1-4959-a965-1e1a129e2b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Format">
+      <UniqueIdentifier>{e6d5455e-111a-431b-80c1-2fc7ea2bb6ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Encoders">
+      <UniqueIdentifier>{c1c278f9-9e17-4d12-9ded-e85b241dbe34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders">
+      <UniqueIdentifier>{97d4d200-d422-4e42-8dad-f7b021ff9c35}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
