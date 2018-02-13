@@ -4,13 +4,14 @@
 
 using namespace Jagerts::Felcp::IO::Archive;
 
-#define _GET(TYPE, VAR) TYPE VAR; source >> VAR
+#define _READ_S(NAME, BIN_SIZE) char NAME[BIN_SIZE]; source.read(NAME, BIN_SIZE)
+#define _READ(TYPE, NAME) _READ_S(NAME##_s, sizeof(TYPE)); TYPE NAME = *reinterpret_cast<TYPE*>(NAME##_s);
 
 bool ArchiveDecoder::TryDecode(std::istream& source, ArchiveFile* output, void* arg)
 {
-    _GET(int, name);
-    _GET(int, version);
-    _GET(size_t, file_count);
+	_READ_S(name, 4);
+	_READ_S(version, 4);
+	_READ(size_t, file_count);
 
     std::vector<size_t> offsets;
     size_t b_offset = (sizeof(int) * 2) + sizeof(size_t);
@@ -19,24 +20,26 @@ bool ArchiveDecoder::TryDecode(std::istream& source, ArchiveFile* output, void* 
     for (size_t index = 0; index < file_count; index++)
     {
         char* buffer;
-        _GET(size_t, name_size);
+		_READ(size_t, name_size);
 
-        buffer = new char[name_size];
-        source.get(buffer, name_size);
+        buffer = new char[name_size + 1];
+		buffer[name_size] = '\0';
+        source.read(buffer, name_size);
         std::string name = buffer;
         delete[] buffer;
 
-        _GET(size_t, ext_size);
+		_READ(size_t, ext_size);
 
-        buffer = new char[ext_size];
-        source.get(buffer, ext_size);
+        buffer = new char[ext_size + 1];
+		buffer[ext_size] = '\0';
+        source.read(buffer, ext_size);
         std::string ext = buffer;
         delete[] buffer;
 
-        _GET(size_t, offset);
+		_READ(size_t, offset);
         offsets.push_back(offset);
 
-        _GET(size_t, length);
+		_READ(size_t, length);
 
         ArchiveFileItem* file = ArchiveFileItem::Create(length);
         file->SetName(name);
@@ -53,7 +56,7 @@ bool ArchiveDecoder::TryDecode(std::istream& source, ArchiveFile* output, void* 
 
         size_t size = files[index]->GetSize();
         char* buffer = files[index]->GetData();
-        source.get(buffer, size);
+        source.read(buffer, size);
 
         output->AddFile(ArchiveFileItemType::Managed, files[index]);
     }
@@ -62,4 +65,5 @@ bool ArchiveDecoder::TryDecode(std::istream& source, ArchiveFile* output, void* 
     return true;
 }
 
-#undef _GET
+#undef _READ_S
+#undef _READ

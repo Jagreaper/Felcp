@@ -14,7 +14,8 @@ void ArchiveFileItem::Free(const ArchiveFileItem* const file)
 
 ArchiveFileItem::ArchiveFileItem(size_t size)
 {
-    this->_data = new char[size];
+    this->_data = new char[size + 1];
+	this->_data[size] = '\0';
     this->_size = size;
 }
 

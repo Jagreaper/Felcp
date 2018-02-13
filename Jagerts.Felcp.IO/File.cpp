@@ -41,7 +41,7 @@ const size_t File::GetSize() const
 
 void File::ReadAll(char* data, size_t* length_ptr) const
 {
-	std::ifstream stream(this->_path, std::ifstream::in);
+	std::ifstream stream(this->_path, std::ifstream::binary);
 
 	if (!stream)
 		throw std::runtime_error("File does not exists");
@@ -50,7 +50,7 @@ void File::ReadAll(char* data, size_t* length_ptr) const
 	size_t size = stream.tellg();
 
 	stream.seekg(0, stream.beg);
-	stream.get(data, size);
+	stream.read(data, size);
 
 	stream.close();
 
@@ -60,7 +60,10 @@ void File::ReadAll(char* data, size_t* length_ptr) const
 
 const char* File::ReadAll(size_t* length_ptr) const
 {
-	char* data = new char[this->GetSize()];
+	size_t size = this->GetSize();
+	char* data = new char[size + 1];
+	data[size] = '\0';
+
 	this->ReadAll(data, length_ptr);
 	return data;
 }

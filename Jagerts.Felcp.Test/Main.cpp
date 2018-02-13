@@ -5,6 +5,7 @@
 #include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
+#include "Jagerts.Felcp.IO.Archive/ArchiveEncoder.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveDecoder.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveFile.hpp"
 #include "Jagerts.Felcp.IO.Archive/ArchiveFileItem.hpp"
@@ -89,13 +90,32 @@ void DerializeXml()
 	game_object.Deserialize(xml.GetElements()->at(0));
 }
 
-void CreateArchiveTest()
+void ArchiveEncoderTest()
 {
 	ArchiveFile archive;
 
 	File file(Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml");
 	ArchiveFileItem* item = ArchiveFileItem::Create(file.GetSize());
 	file.ReadAll(item->GetData());
+	item->SetName("Xml Test");
+	item->SetExtension("xml");
+
+	std::cout << item->GetData() << "\n";
+	
+	archive.AddFile(ArchiveFileItemType::Managed, item);
+
+	std::string jarc_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.jarc";
+	ArchiveEncoder encoder;
+	encoder.TryEncode(jarc_path.c_str(), &archive);
+}
+
+void ArchiveDecoderTest()
+{
+	ArchiveFile archive;
+
+	std::string jarc_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.jarc";
+	ArchiveDecoder decoder;
+	decoder.TryDecode(jarc_path.c_str(), &archive);
 }
 
 #if defined(_WIN32) && defined(RELEASE)
@@ -105,5 +125,6 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-	CreateArchiveTest();
+	ArchiveEncoderTest();
+	ArchiveDecoderTest();
 }
