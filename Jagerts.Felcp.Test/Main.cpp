@@ -49,17 +49,17 @@ void EncodeXml()
 	element.AddElement(XmlElement("GameObject"));
 	xml.AddElement(element);
 
-	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	std::string xml_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
 	XmlEncoder xml_encoder;
-	xml_encoder.TryEncode(xml_path, &xml);
+	xml_encoder.TryEncode(xml_path.c_str(), &xml);
 }
 
 void DecodeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	std::string xml_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
 	XmlDecoder xml_decoder;
-	xml_decoder.TryDecode(xml_path, &xml);
+	xml_decoder.TryDecode(xml_path.c_str(), &xml);
 }
 
 void SerializeXml()
@@ -72,17 +72,17 @@ void SerializeXml()
 	XmlFile xml;
 	xml.AddElement(element);
 
-	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	std::string xml_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
 	XmlEncoder xml_encoder;
-	xml_encoder.TryEncode(xml_path, &xml);
+	xml_encoder.TryEncode(xml_path.c_str(), &xml);
 }
 
 void DerializeXml()
 {
 	XmlFile xml;
-	const char* xml_path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	std::string xml_path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
 	XmlDecoder xml_decoder;
-	xml_decoder.TryDecode(xml_path, &xml);
+	xml_decoder.TryDecode(xml_path.c_str(), &xml);
 
 	XmlGameObject game_object;
 	game_object.Register();
@@ -93,7 +93,7 @@ void CreateArchiveTest()
 {
 	ArchiveFile archive;
 
-	std::string path = "/Users/Jagreaper/Desktop/Xml Test.xml";
+	std::string path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
 	//File file(path);
 	//size_t size;
 	//const char* data = file.ReadAll(&size);
@@ -106,11 +106,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-	std::string home_dir = Environment::GetPath(Environment::Directory::Home);
-
-	std::cout << home_dir << "\n";
-
-	CreateArchiveTest();
-	//SerializeXml();
+	//CreateArchiveTest();
+	SerializeXml();
 	//DerializeXml();
 }

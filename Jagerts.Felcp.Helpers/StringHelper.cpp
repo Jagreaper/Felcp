@@ -18,20 +18,16 @@ bool StringHelper::Contains(const std::string& input, const std::string& match)
 	return input.find(match) != std::string::npos;
 }
 
-std::string StringHelper::Replace(const std::string& input, const std::string& match, const std::string& replace)
+std::string StringHelper::Replace(std::string string, const std::string& match, const std::string& replace)
 {
-	std::string output = input;
-
-	size_t index = -1;
-	do
+	size_t index = 0;
+	while ((index = string.find(match, index)) != std::string::npos)
 	{
-		if (index != -1)
-			output.replace(index, match.length(), replace);
+		string.replace(index, match.length(), replace);
+		index += replace.length();
+	}
 
-		index = input.find(match, index + 1);
-	} while (index != std::string::npos);
-
-	return output;
+	return string;
 }
 
 std::vector<std::string> StringHelper::Split(const std::string &s, char delim)

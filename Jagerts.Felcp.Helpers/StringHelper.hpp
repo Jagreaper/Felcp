@@ -18,7 +18,7 @@ namespace Jagerts::Felcp::Helpers
 		static bool BeginsWith(const std::string& input, const std::string& match);
 		static bool EndsWith(const std::string& input, const std::string& match);
 		static bool Contains(const std::string& input, const std::string& match);
-		static std::string Replace(const std::string& input, const std::string& match, const std::string& replace);
+		static std::string Replace(std::string string, const std::string& match, const std::string& replace);
 		static std::vector<std::string> Split(const std::string &s, char delim);
 		static std::string TrimLeading(const std::string& s);
 	private:
