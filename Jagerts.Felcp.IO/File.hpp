@@ -13,7 +13,8 @@ namespace Jagerts::Felcp::IO
 		const bool Exists() const;
 		void Create();
 		const size_t GetSize() const;
-		const char* ReadAll(size_t* length_ptr, char** data = NULL) const;
+		void ReadAll(char* data, size_t* length_ptr = NULL) const;
+		const char* ReadAll(size_t* length_ptr = NULL) const;
 		void FreeData(const char*& data);
 #define OPEN_STREAM(STREAM_TYPE, STREAM_ARGS) \
 		void OpenStream(STREAM_TYPE* stream, int mode = STREAM_ARGS); \

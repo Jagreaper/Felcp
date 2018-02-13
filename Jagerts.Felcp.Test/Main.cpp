@@ -93,20 +93,17 @@ void CreateArchiveTest()
 {
 	ArchiveFile archive;
 
-	std::string path = Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml";
-	//File file(path);
-	//size_t size;
-	//const char* data = file.ReadAll(&size);
+	File file(Environment::GetPath(Environment::Directory::Desktop) + "/Xml Test.xml");
+	ArchiveFileItem* item = ArchiveFileItem::Create(file.GetSize());
+	file.ReadAll(item->GetData());
 }
 
-#if (defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)) && RELEASE
+#if defined(_WIN32) && defined(RELEASE)
 #include <Windows.h>
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 #else
 int main()
 #endif
 {
-	//CreateArchiveTest();
-	SerializeXml();
-	//DerializeXml();
+	CreateArchiveTest();
 }

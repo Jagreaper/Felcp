@@ -39,23 +39,29 @@ const size_t File::GetSize() const
 	return size;
 }
 
-const char* File::ReadAll(size_t* length_ptr, char** data_ptr) const
+void File::ReadAll(char* data, size_t* length_ptr) const
 {
 	std::ifstream stream(this->_path, std::ifstream::in);
 
-	if(!stream)
+	if (!stream)
 		throw std::runtime_error("File does not exists");
 
 	stream.seekg(0, stream.end);
-	*length_ptr = stream.tellg();
-	char* data = new char[*length_ptr];
+	size_t size = stream.tellg();
 
 	stream.seekg(0, stream.beg);
-	stream.get(data, *length_ptr);
+	stream.get(data, size);
 
-	std::memcpy(&data_ptr, data, *length_ptr);
-	
 	stream.close();
+
+	if (length_ptr != NULL)
+		*length_ptr = size;
+}
+
+const char* File::ReadAll(size_t* length_ptr) const
+{
+	char* data = new char[this->GetSize()];
+	this->ReadAll(data, length_ptr);
 	return data;
 }
 
