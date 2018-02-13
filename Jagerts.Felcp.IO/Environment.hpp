@@ -5,7 +5,7 @@
 
 namespace Jagerts::Felcp::IO::Environment
 {
-    enum EnvironmentFolder
+    enum Directory
     {
         Home,
         Documents,
@@ -17,5 +17,5 @@ namespace Jagerts::Felcp::IO::Environment
         Applications,
     };
 
-    std::string GetPath(const EnvironmentFolder folder);
+	JAGERTS_FELCP_IO_API std::string GetPath(const Directory directory);
 }

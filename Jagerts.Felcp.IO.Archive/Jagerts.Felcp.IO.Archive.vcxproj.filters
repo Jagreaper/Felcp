@@ -4,14 +4,14 @@
     <ClCompile Include="ArchiveFile.cpp">
       <Filter>Format</Filter>
     </ClCompile>
-    <ClCompile Include="ArchiveFileItem.cpp">
-      <Filter>Format</Filter>
-    </ClCompile>
     <ClCompile Include="ArchiveEncoder.cpp">
       <Filter>Encoders</Filter>
     </ClCompile>
     <ClCompile Include="ArchiveDecoder.cpp">
       <Filter>Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveFileItem.cpp">
+      <Filter>Format</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

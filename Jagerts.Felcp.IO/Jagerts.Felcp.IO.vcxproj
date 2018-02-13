@@ -29,6 +29,11 @@
     <ClInclude Include="File.hpp" />
     <ClInclude Include="Environment.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jagerts.Felcp.Helpers\Jagerts.Felcp.Helpers.vcxproj">
+      <Project>{97c4307c-f237-4d4b-a8e6-fa2fd57f8f9d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9D4A4882-1D89-4140-B4BA-17936F7D95C6}</ProjectGuid>

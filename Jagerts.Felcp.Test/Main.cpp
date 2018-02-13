@@ -1,6 +1,7 @@
 #include "Jagerts.Felcp.Xml/XmlFile.hpp"
 #include "Jagerts.Felcp.Xml/XmlObject.hpp"
 #include "Jagerts.Felcp.IO/File.hpp"
+#include "Jagerts.Felcp.IO/Environment.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlEncoder.hpp"
 #include "Jagerts.Felcp.IO.Xml/XmlDecoder.hpp"
 #include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
@@ -105,7 +106,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 int main()
 #endif
 {
-	const char* home_dir = getenv("HOME");
+	std::string home_dir = Environment::GetPath(Environment::Directory::Home);
 
 	std::cout << home_dir << "\n";
 

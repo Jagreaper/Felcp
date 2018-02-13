@@ -197,7 +197,7 @@ xcopy "$(SolutionDir)Jagerts.Felcp.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Fel
     <ClCompile Include="ArchiveFile.cpp" />
     <ClCompile Include="ArchiveDecoder.cpp" />
     <ClCompile Include="ArchiveEncoder.cpp" />
-    <ClCompile Include="ArchiveFileIteam.cpp" />
+    <ClCompile Include="ArchiveFileItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Felcp.Shared\Common.hpp" />
